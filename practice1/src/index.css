@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: auto;
+    background: linear-gradient(to top right, beige, white);
+}
+
+.showInfo{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: black;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 60%;
+    left: calc(50% - 40px);
+}
+
+#TodoContainer{
+    height: auto;
+    width: 300px;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#TodoContainer div:nth-child(1){
+    font-weight: 600;
+}
+
+#TodoContainer div:nth-child(2){
+    font-size: small;
+}
+
+
+/* for exercise */
+
+#PostListMainContainer{
+    width: 100vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+
+}
+
+#PostContainer{
+    height: auto;
+    width: auto;
+    /* margin: 20px; */
+    padding: 10px;
+    border: 2px solid black;
+    display: grid;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#PostContainer div:nth-child(1){
+    font-weight: 600;
+}
+
+#PostContainer div:nth-child(4){
+    font-size: small;
+}

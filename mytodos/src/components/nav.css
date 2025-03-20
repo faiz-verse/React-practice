@@ -1,0 +1,100 @@
+#nav-container{
+    height: 75px;
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 10px gray;
+}
+
+#nav-title-wrapper{
+    height: auto;
+    width: auto;
+    margin: 0% 5%;
+
+    display: flex;
+    align-items: center;
+}
+
+#nav-logo{
+    height: 35px;
+    width: 35px;
+    background-image: url('../assets/timeline.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#nav-title{
+    margin-left: 5px;
+    color: black;
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+#nav-info{
+    margin-left: 2%;
+    max-width: 275px;
+    color: gray;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* for responsiveness */
+/* small devices */
+@media screen and (max-width: 480px){
+    #nav-logo{
+        height: 27px;
+        width: 27px;
+    }
+    #nav-title{
+        font-size:18px;
+    }
+    #nav-info{
+        max-width: 200px;
+        font-size: 10px;
+        margin-left: 2px;
+    }
+}
+/* medium devices */
+@media screen and (max-width: 600px){
+    #nav-logo{
+        height: 27px;
+        width: 27px;
+    }
+    #nav-title{
+        font-size:18px;
+    }
+    #nav-info{
+        max-width: 200px;
+        font-size: 10px;
+        margin-left: 2px;
+    }
+}
+/* large devices */
+@media screen and (max-width: 768px) and (min-width: 600px){
+    #nav-logo{
+        height: 27px;
+        width: 27px;
+    }
+    #nav-title{
+        font-size:18px;
+    }
+    #nav-info{
+        max-width: 200px;
+        font-size: 10px;
+        margin-left: 2px;
+    }
+}
+/* tab devices */
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    /* remain same */
+}
+/* small laptop devices */
+@media screen and (max-width: 1280px) and (min-width: 1024px){
+    /* remain same */
+}
+/* desktop devices */
+@media screen and (max-width: 1440px) and (min-width: 1280px){
+    /* remain same */
+}

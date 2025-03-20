@@ -1,0 +1,330 @@
+#main-container {
+    height: 650px;
+    width: 40vw;
+    background: beige;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+    
+    /* left: calc(50% - 20vw); */
+}
+
+#todo-list-container {
+    height: calc(89% - 75px*2);
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: lightblue;
+    border-radius: 50px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: blue;
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+  }
+
+.todo-list-item {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+input[type="checkbox"] {
+    appearance: none; /* Remove default styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    user-select: none;
+    cursor: pointer;
+
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+
+    border: 2px solid green; /* Green border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: white; /* Default background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Add green background with white check when checked */
+input[type="checkbox"]:checked {
+    background-color: green;
+    border-color: green;
+    position: relative;
+}
+
+/* Create a white checkmark when checked */
+input[type="checkbox"]:checked::after {
+    content: "✔"; /* Unicode checkmark */
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-text {
+    max-width: 80%;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+p{
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    align-self: center;
+}
+
+
+.list-left {
+    height: auto;
+    width: 90%;
+    display: flex;
+}
+
+.list-right {
+    height: auto;
+    width: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-button{
+    height: 30px;
+    width: 30px;
+    background: blue;
+    border: none;
+    border-radius: 7px;
+
+    box-shadow: 2px 2px 0px darkblue;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.1s ease-out;
+}
+
+.edit-button:active{
+    transform: translateX(2px) translateY(2px);
+    box-shadow: none;
+}
+
+.delete-button{
+    height: 30px;
+    width: 30px;
+    background: blue;
+    border: none;
+    border-radius: 7px;
+
+    box-shadow: 2px 2px 0px darkblue;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.1s ease-out;
+}
+
+.delete-button:active{
+    transform: translateX(2px) translateY(2px);
+    box-shadow: none;
+}
+
+.info-text-1, .info-text-2{
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    align-self: start;
+    margin-left: 37.5px;
+}
+
+.info-text-1{
+    margin-top: 15px;
+    margin-bottom: -5px;
+}
+.info-text-2{
+    margin-bottom: 5px;
+}
+
+/* for responsiveness */
+/* small devices */
+@media screen and (max-width: 480px){
+    #main-container{
+        width: 90vw;
+        height: 90vh;
+    }
+    .edit-button, .delete-button{
+        width: 25px;
+        height: 25px;
+    }
+    .list-right{
+        gap: 7.5px;
+    }
+    .todo-text{
+        font-size: 15px;
+    }
+    input[type="checkbox"] {
+        width: 20px;
+        height: 18px;
+    }
+    input[type="checkbox"]:checked::after{
+        font-size: 10px;
+    }
+    .info-text-1{
+        font-size: 16px;
+        margin-left: 30px;
+        margin-top: 17px;
+    }
+    .info-text-2{
+        font-size: 16px;
+        margin-left: 30px;
+    }
+}
+/* medium devices */
+@media screen and (max-width: 600px){
+    #main-container{
+        width: 90vw;
+        height: 90vh;
+    }
+    .edit-button, .delete-button{
+        width: 25px;
+        height: 25px;
+    }
+    .list-right{
+        gap: 7.5px;
+    }
+    .todo-text{
+        font-size: 15px;
+    }
+    input[type="checkbox"] {
+        width: 20px;
+        height: 18px;
+    }
+    input[type="checkbox"]:checked::after{
+        font-size: 10px;
+    }
+    .info-text-1{
+        font-size: 16px;
+        margin-left: 30px;
+        margin-top: 17px;
+    }
+    .info-text-2{
+        font-size: 16px;
+        margin-left: 30px;
+    }
+}
+/* large devices */
+@media screen and (max-width: 768px) and (min-width: 600px){
+    #main-container{
+        width: 85vw;
+        height: 90vh;
+    }
+    .edit-button, .delete-button{
+        width: 25px;
+        height: 25px;
+    }
+    .list-right{
+        gap: 7.5px;
+    }
+    .todo-text{
+        font-size: 15px;
+    }
+    input[type="checkbox"] {
+        width: 20px;
+        height: 18px;
+    }
+    input[type="checkbox"]:checked::after{
+        font-size: 10px;
+    }
+    .info-text-1{
+        font-size: 16px;
+        margin-left: 30px;
+        margin-top: 17px;
+    }
+    .info-text-2{
+        font-size: 16px;
+        margin-left: 30px;
+    }
+}
+/* tab devices */
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    #main-container{
+        width: 70vw;
+        height: 90vh;
+    }
+    .edit-button, .delete-button{
+        width: 25px;
+        height: 25px;
+    }
+    .list-right{
+        gap: 7.5px;
+    }
+    .todo-text{
+        font-size: 15px;
+    }
+    input[type="checkbox"] {
+        width: 20px;
+        height: 18px;
+    }
+    input[type="checkbox"]:checked::after{
+        font-size: 10px;
+    }
+    .info-text-1{
+        font-size: 16px;
+        margin-left: 30px;
+        margin-top: 17px;
+    }
+    .info-text-2{
+        font-size: 16px;
+        margin-left: 30px;
+    }
+}
+/* small laptop devices */
+@media screen and (max-width: 1280px) and (min-width: 1024px){
+    #main-container{
+        width: 70vw;
+    }
+    
+}
+/* desktop devices */
+@media screen and (max-width: 1440px) and (min-width: 1280px){
+    #main-container{
+        width: 525px;
+    }
+}

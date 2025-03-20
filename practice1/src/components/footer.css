@@ -1,0 +1,15 @@
+#footer{
+    width: 100vw;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: black;
+    color: white;
+
+    position: sticky;
+    bottom: 0;
+}

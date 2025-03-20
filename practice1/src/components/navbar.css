@@ -1,0 +1,51 @@
+#nav{
+    width: 100vw;
+    height: 75px;
+    background: beige;
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+    position: sticky;
+    top: 0;
+}
+
+#navText{
+    color: black;
+    font-weight: 600;
+    font-size: 40px;
+    margin-left: 40px;
+}
+
+#nav-options{
+    height: auto;
+    width: auto;
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    right: 40px;
+    list-style: none;
+}
+
+.option{
+    font-size: 18px;
+    font-weight: 500;
+
+    position: relative;
+}
+
+.option::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px; /* Adjust position */
+    width: 0%;
+    height: 3px;
+    background-color: black;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.option:hover::after {
+    width: 100%;
+    left: 0%;
+}

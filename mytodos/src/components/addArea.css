@@ -1,0 +1,100 @@
+#add-area{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#input-area{
+
+    appearance: none;
+    /* outline: none; */
+
+    height: 32.5px;
+    width: 78.5%;
+    margin-right: 15px;
+    margin-left: 10px;
+    background: white;
+    border: none;
+    border-radius: 7px;
+
+    padding-left: 15px;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+
+    caret-color: blue;
+
+    transition: all 0.2s ease-out;
+}
+
+#input-area:focus{
+    scale: 1.01;
+}
+
+#add-button{
+    height: 32.5px;
+    width: 35px;
+    background: blue;
+    border: none;
+    border-radius: 7px;
+
+    box-shadow: 2px 2px 0px darkblue;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.1s ease-out;
+}
+
+#add-button:active{
+    transform: translateX(2px) translateY(2px);
+    box-shadow: none;
+}
+
+/* for responsiveness */
+/* small devices */
+@media screen and (max-width: 480px){
+    #add-area{
+        width: 90%;
+    }
+    #input-area{
+        font-size: 15px
+    }
+}
+/* medium devices */
+@media screen and (max-width: 600px){
+    #add-area{
+        width: 90%;
+    }
+    #input-area{
+        font-size: 15px
+    }
+}
+/* large devices */
+@media screen and (max-width: 768px) and (min-width: 600px){
+    #add-area{
+        width: 90%;
+    }
+    #input-area{
+        font-size: 15px
+    }
+}
+/* tab devices */
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    /* remain same */
+}
+/* small laptop devices */
+@media screen and (max-width: 1280px) and (min-width: 1024px){
+    /* remain same */
+}
+/* desktop devices */
+@media screen and (max-width: 1440px) and (min-width: 1280px){
+    /* remain same */
+}
+
