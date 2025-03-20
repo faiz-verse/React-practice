@@ -16,6 +16,7 @@ import ChatbotChat from './components/ChatbotChat.jsx';
 function App() {
 
     const [toggleChat, setToggleChat] = useState(false)
+    const [toggleUser, setToggleUser] = useState(true)
 
     const [chat, setChat] = useState("")
     const [chats, setChats] = useState([])
@@ -25,8 +26,18 @@ function App() {
             return
         }
         else {
-            setChats([...chats, { chatID: uuidv4(), chat, isUserChat: false }]) //adding the chat after chats
+            handleToggleUser()
+            // setChats([...chats, { chatID: uuidv4(), chat, isUserChat: false }]) //adding the chat after chats
             setChat("")
+        }
+    }
+
+    const handleToggleUser = () => {
+        if(toggleUser){
+            setChats([...chats, { chatID: uuidv4(), chat, isUserChat: true }]) //adding the chat after chats
+        }
+        else{
+            setChats([...chats, { chatID: uuidv4(), chat, isUserChat: false }]) //adding the chat after chats
         }
     }
 
@@ -42,7 +53,7 @@ function App() {
             <Chatbot onClick={()=> setToggleChat(!toggleChat)} toggleChat={toggleChat} />
 
             {/* CHAT BOT CHAT */}
-            <ChatbotChat chat={chat} chats={chats} setChat={setChat} handleSend={handleSend} toggleChat={toggleChat}/>
+            <ChatbotChat chat={chat} chats={chats} setChat={setChat} handleSend={handleSend} toggleChat={toggleChat} toggleUser={toggleUser} setToggleUser={setToggleUser}/>
         </>
     )
 }

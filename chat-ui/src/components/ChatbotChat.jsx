@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ChatbotChat({chat, chats, setChat, handleSend, toggleChat}) {
+function ChatbotChat({chat, chats, setChat, handleSend, toggleChat, toggleUser, setToggleUser}) {
     return (
         <div id='chatbot-chat' style={toggleChat? {right: '2%'}: {right: '-50%'}}>
             {/* SHOW CHAT AREA */}
@@ -33,6 +33,21 @@ function ChatbotChat({chat, chats, setChat, handleSend, toggleChat}) {
                 />
                 <button onClick={handleSend} disabled={chat.length <= 1}>Send</button>
             </div>
+
+            {/* TOGGLE USER AREA */}
+            <div className="button" onClick={() => setToggleUser(!toggleUser)}>
+                <span className="buttonText"
+                    style={{
+                        left: toggleUser ? "5%" : "40%",
+                    }}
+                >{toggleUser ? "User" : "Bot"}</span>
+                <div className="buttonBall"
+                    style={{
+                        left: toggleUser ? "62%" : "3%",
+                    }}
+                ></div>
+            </div>
+
         </div>
     )
 }
