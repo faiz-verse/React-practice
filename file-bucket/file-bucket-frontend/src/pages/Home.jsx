@@ -5,6 +5,8 @@ import { HiCursorClick } from 'react-icons/hi';
 
 function Home({ uniqueURL, createURL, setCreateURL, inputRef }) {
 
+    const API_URL = import.meta.env.VITE_API_URL; // to communicate with the deployed backend server
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -18,7 +20,7 @@ function Home({ uniqueURL, createURL, setCreateURL, inputRef }) {
         setError("");
 
         try {
-            const response = await fetch("http://localhost:5000/api/buckets/create", {
+            const response = await fetch(`${API_URL}/api/buckets/create`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

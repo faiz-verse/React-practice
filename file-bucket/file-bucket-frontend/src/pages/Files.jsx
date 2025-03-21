@@ -13,6 +13,9 @@ import PropertiesModal from "../components/propertiesModal.jsx";
 import '../components/PropertiesModal.css';
 
 function Files() {
+
+    const API_URL = import.meta.env.VITE_API_URL; // to communicate with the deployed backend server
+
     const { url } = useParams(); // getting url as parameter
     const [copied, setCopied] = useState(false); // for copy link feature
     const [files, setFiles] = useState([]); // Store fetched files
@@ -30,7 +33,7 @@ function Files() {
         }));
     };
 
-    const fullURL = `https://filebucket.com/${url}`;
+    const fullURL = `https://file-bucket.onrender.com/${url}`;
 
     // State for Countdown Timers
     const [expiresAt, setExpiresAt] = useState(null);
@@ -52,7 +55,7 @@ function Files() {
 
     const fetchBucketAndFiles = async () => {
         try {
-            const bucketResponse = await fetch(`http://localhost:5000/api/buckets/${url}`);
+            const bucketResponse = await fetch(`${API_URL}/api/buckets/${url}`);
             const bucketData = await bucketResponse.json();
 
             if (!bucketData.success && bucketData.status === "not_found") {
@@ -87,7 +90,7 @@ function Files() {
 
             // ✅ Bucket is active
             setBucketStatus("active");
-            const filesResponse = await fetch(`http://localhost:5000/api/files/${url}`);
+            const filesResponse = await fetch(`${API_URL}/api/files/${url}`);
             const filesData = await filesResponse.json();
             setFiles(filesData.success ? filesData.files : []);
 
@@ -104,7 +107,7 @@ function Files() {
     // ✅ Restore bucket
     const restoreBucket = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/buckets/${url}/restore`, {
+            const response = await fetch(`${API_URL}/api/buckets/${url}/restore`, {
                 method: "PUT",  // ✅ Use PUT request to update existing bucket
                 headers: { "Content-Type": "application/json" }
             });
@@ -128,7 +131,7 @@ function Files() {
         try {
             setError(""); // ✅ Clear error before creating
 
-            const response = await fetch("http://localhost:5000/api/buckets/create", {
+            const response = await fetch(`${API_URL}/api/buckets/create`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ url: url })
@@ -253,7 +256,7 @@ function Files() {
         formData.append("bucketUrl", url);
 
         try {
-            const response = await fetch("http://localhost:5000/api/files/upload", {
+            const response = await fetch(`${API_URL}/api/files/upload`, {
                 method: "POST",
                 body: formData,
             });
@@ -278,7 +281,7 @@ function Files() {
     const deleteBucket = async () => {
 
         try {
-            const response = await fetch(`http://localhost:5000/api/buckets/${url}`, {
+            const response = await fetch(`${API_URL}/api/buckets/${url}`, {
                 method: "DELETE",
             });
 
@@ -311,7 +314,7 @@ function Files() {
     // function to download all files
     const handleDownloadAllFiles = async () => {
         try {
-            const downloadURL = `http://localhost:5000/api/files/download-all/${url}`;
+            const downloadURL = `${API_URL}/api/files/download-all/${url}`;
 
             // ✅ Create a hidden link to trigger download
             const link = document.createElement("a");
@@ -456,7 +459,7 @@ function Files() {
     // Handling delete file
     const handleDeleteAllFiles = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/files/delete-all/${url}`, {
+            const response = await fetch(`${API_URL}/api/files/delete-all/${url}`, {
                 method: "DELETE",
             });
 
@@ -474,7 +477,7 @@ function Files() {
 
     const handleDeleteFile = async (file) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/files/delete/${file._id}`, {
+            const response = await fetch(`${API_URL}/api/files/delete/${file._id}`, {
                 method: "DELETE",
             });
 
@@ -550,7 +553,7 @@ function Files() {
                     fgColor="white"
                     size={256}
                     style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                    value={"https://filebucket.com/" + url}
+                    value={"https://file-bucket.onrender.com/" + url}
                     viewBox={`0 0 256 256`}
                 />
             </div>
