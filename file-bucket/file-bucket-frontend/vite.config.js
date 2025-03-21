@@ -8,7 +8,7 @@ export default defineConfig({
     outDir: 'dist',
   },
   server: {
-    port: 5000,
+    port: 3000,
   },
   preview: {
     port: 8080,
