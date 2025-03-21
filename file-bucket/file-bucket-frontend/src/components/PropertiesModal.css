@@ -1,0 +1,136 @@
+#properties-modal{
+    width: 80vw;
+    height: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: beige;
+
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    position: absolute;
+    top: 15%;
+    left: calc(50% - 40vw);
+
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+#modal-close{
+    all: unset;
+
+    height: auto;
+    width: auto;
+    padding: 7px;
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    transition: scale 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+#modal-close:active{
+    scale: 0.95;
+}
+
+#properties-title{
+    height: 20%;
+    width: fit-content;
+    font-size: 2rem;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+#properties-container{
+    height: 65%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.property{
+    height: fit-content;
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.property span{
+    font-size: 1rem; 
+}
+
+.property span:nth-child(1){
+    font-weight: 500;
+}
+
+#modal-buttons-container{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal-button{
+    all: unset;
+
+    height: auto;
+    width: fit-content;
+
+    color: white;
+    font-size: 1rem;
+    padding: 7px;
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+    transition: scale 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.modal-button:active{
+    scale: 0.95;
+}
+
+.modal-button:nth-child(1){
+    background-color: yellowgreen;
+}
+
+.modal-button:nth-child(2){
+    background-color: tomato;
+}
+
+.modal-button:nth-child(3){
+    background-color: gray;
+}
+
+#property-file-name{
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: cornflowerblue;
+    cursor: pointer;
+    transition: scale 0.15s ease-in-out;
+}
+
+#property-file-name:active{
+    scale: 0.98;
+}

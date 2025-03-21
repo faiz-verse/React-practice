@@ -1,0 +1,368 @@
+#bucket-info{
+    margin-top: 15px;
+}
+
+#loading-message{
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: lightblue;
+}
+
+#error-message{
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+#copy-container {
+    margin-top: 15px;
+    width: fit-content;
+    height: auto;
+    display: flex;
+    position: relative;
+}
+
+#copy-url {
+    width: fit-content;
+    height: auto;
+    padding: 7px;
+    background-color: rgba(255, 255, 255, 0.200);
+    border-radius: 7px;
+}
+
+#copy-icon {
+    margin: 0px 10px;
+    align-self: end;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#fi-copy-icon {
+    color: rgba(255, 255, 255, 0.300);
+    transition: all 0.15s;
+}
+
+#copy-icon:hover #fi-copy-icon {
+    color: white;
+}
+
+#copy-icon:active #fi-copy-icon{
+    scale: 0.9;
+}
+
+#copy-notifier-wrapper{
+    position: relative;
+}
+
+/* "Copied!" Notification */
+#copy-notifier {
+    width: fit-content;
+    height: 15px;
+    font-size: 0.7rem;
+    background: yellowgreen;
+    color: white;
+    padding: 5px;
+    border-radius: 7px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    transition: all 0.1s ease-in-out;
+}
+
+#copied-info{
+    color: rgb(177, 177, 177);
+    font-size: 0.9rem;
+    font-style: italic;
+    align-self: center;
+}
+
+#countdown-wrapper{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#buttons-container {
+    width: fit-content;
+    height: auto;
+    font-size: 1rem;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+#create-new-button,
+#destroy-button {
+    all: unset;
+    width: fit-content;
+    height: auto;
+    padding: 7px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    transition: all 0.15s ease-in-out;
+
+    cursor: pointer;
+}
+
+#create-new-button:active, #destroy-button:active{
+    scale: 0.96;
+}
+
+#create-new-button {
+    background-color: yellowgreen;
+}
+
+#destroy-button {
+    background-color: tomato;
+}
+
+#files-buttons-container{
+    margin-top: 15px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    gap: 15px;
+}
+
+#upload-files-button {
+    all: unset;
+    font-size: 1rem;
+    width: fit-content;
+    height: auto;
+    background-color: cornflowerblue;
+    padding: 7px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+#upload-files-button:active{
+    scale: 0.96;
+}
+
+#download-files-button {
+    all: unset;
+    font-size: 1rem;
+    width: fit-content;
+    height: auto;
+    background-color: yellowgreen;
+    padding: 7px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+#download-files-button:active{
+    scale: 0.96;
+}
+
+#delete-files-button {
+    all: unset;
+    font-size: 1rem;
+    width: fit-content;
+    height: auto;
+    background-color: tomato;
+    padding: 7px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+#delete-files-button:active{
+    scale: 0.96;
+}
+
+#uploaded-files{
+    width: 100%;
+    height: auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#file-item-header{
+    width: 100%;
+    height: 40px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid white;
+}
+
+.file-header{
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+}
+.file-header:nth-child(1){
+    width: 40%;
+}
+.file-header:nth-child(2){
+    width: 20%;
+}
+.file-header:nth-child(3){
+    width: 15%;
+    padding-left: 30px;
+}
+.file-header:nth-child(4){
+    width: 20%;
+}
+.file-header:nth-child(5){
+    margin-right: 0px;
+    width: 5%;
+}
+
+.file-item{
+    width: 100%;
+    height: auto;
+    padding: 10px 0px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.file-info{
+    font-size: 1rem;
+    position: relative;
+}
+.file-name{
+    width: 40%;
+    text-decoration: underline;
+    text-decoration-color: cornflowerblue;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: scale 0.15s ease-in-out;
+}
+.file-name:active{
+    scale: 0.98;
+}
+
+.file-type{
+    width: 20%;
+}
+.file-size{
+    width: 15%;
+    padding-left: 30px;
+}
+.file-upload{
+    width: 20%;
+}
+.file-more{
+    width: 5%;
+}
+
+.more-option-icon{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.fi-more-icon{
+    color: rgba(255, 255, 255, 0.300);
+    transition: all 0.15s ease-in-out;
+}
+
+.more-option-icon:hover .fi-more-icon{
+    color: white;
+}
+
+.more-option-icon:active .fi-more-icon{
+    color: white;
+}
+
+.more-option-wrapper{
+    /* height: 1px;
+    width: 1px; */
+    position: relative;
+}
+
+.more-option{
+    width: 150px;
+    height: auto;
+    padding: 7px;
+    background: beige;
+    border-radius: 7px;
+    font-size: 1rem;
+    color: black;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    position: absolute;
+    left: -170px;
+    top: -10px;
+
+    z-index: 10;
+}
+
+.download-option{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+.download-option:active{
+    scale: 0.96;
+}
+.properties-option{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+.properties-option:active{
+    scale: 0.96;
+}
+.delete-option{
+    width: 100%;
+    height: 30px;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border-top: 1px solid darkgray;
+
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+.delete-option:active{
+    scale: 0.96;
+}

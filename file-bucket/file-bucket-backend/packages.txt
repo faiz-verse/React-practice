@@ -1,0 +1,15 @@
+Necessary packages:
+
+npm install express mongoose cors multer dotenv
+
+express → Web framework for handling routes.
+mongoose → MongoDB ODM for managing database operations.
+cors → Allows cross-origin requests from your frontend.
+multer → Handles file uploads.
+dotenv → Stores environment variables securely.
+
+Connecting to MongoDB – React cannot directly interact with MongoDB. The backend (Express + Mongoose) will handle all database operations.
+
+Processing file uploads – We'll use multer (a middleware for handling file uploads) with Express to receive and store uploaded files.
+
+Security & CORS – Express will allow our frontend (file-bucket) to talk to the backend (file-bucket-backend) by enabling CORS (Cross-Origin Resource Sharing).

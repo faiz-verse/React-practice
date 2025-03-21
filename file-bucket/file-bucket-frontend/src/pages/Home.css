@@ -1,0 +1,121 @@
+span {
+    font-size: 2rem;
+}
+
+#points-wrapper{
+    width: auto;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.point{
+    margin-top: 50px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.point::before{
+    content: '✅';
+    margin: 0px 10px;
+}
+
+#unique-url{
+    display: inline-block; /* Enables transform effects (because by default span does not allow transform properties like scale)*/
+    margin: 0px 7px;
+    padding: 7px 10px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: cornflowerblue;
+    text-underline-offset: 3px;
+    background: rgba(255, 255, 255, 0.200);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+#unique-url:hover{
+    background: rgba(255, 255, 255, 0.300);
+}
+
+#unique-url:active{
+    transform: scale(0.98);
+}
+
+/* Ensure the wrapper behaves properly */
+#create-url {
+    margin: 0px 7px;
+    padding: 7px;
+    width: fit-content;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    border-radius: 7px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: cornflowerblue;
+    text-underline-offset: 3px;
+    caret-color: cornflowerblue;
+    display: inline-block; /* Ensure proper layout */
+}
+
+#create-url input {
+    all: unset;
+    height: 22px;
+    padding: 7px 10px 7px 10px;
+    background: rgba(255, 255, 255, 0.200);
+    border-radius: 7px;
+
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: cornflowerblue;
+    text-underline-offset: 3px;
+    caret-color: cornflowerblue;
+
+    position: relative;
+    top: 0px;
+}
+
+#create-url input:focus {
+    background:rgba(255, 255, 255, 0.300)
+}
+
+#create-url input::placeholder{
+    font-style: italic;
+    color: white;
+    opacity: 0.6;
+    text-decoration: none;
+}
+
+/* Button styling */
+#visit-url {
+    appearance: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: cornflowerblue;
+    position: relative;
+    top: -3px;
+    transition: all 0.15s ease-in-out;
+}
+
+#visit-url:active{
+    transform: scale(0.98);
+    background-color: rgb(72, 114, 192);
+}
+
+#disabled-info{
+    color: tomato;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+#disabled-info::before{
+    content: '❌';
+    margin: 0px 12px;
+}
