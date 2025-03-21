@@ -7,7 +7,8 @@ export default defineConfig({
     outDir: 'dist', // Output folder
   },
   base: '/', // Ensure correct routing for Render
-  server: {
-    port: process.env.PORT || 5173, // Use environment port
+  preview: {
+    port: process.env.PORT || 4173, // Use environment port
+    host: '0.0.0.0'
   }
 });
