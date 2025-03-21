@@ -5,7 +5,7 @@ node_modules/
 .env
 
 # Ignore Google Drive credentials
-file-bucket/file-bucket-backend/google-drive-credentials.json
+google-drive-credentials.json
 
 # Ignore log files and system cache (optional but useful)
 *.log
