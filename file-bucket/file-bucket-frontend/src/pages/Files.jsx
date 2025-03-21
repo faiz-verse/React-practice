@@ -9,7 +9,7 @@ import { CiFileOff, CiFileOn } from "react-icons/ci"; // react file icons
 
 import QRCode from "react-qr-code";
 
-import PropertiesModal from "../components/propertiesModal.jsx";
+import PropertiesModal from "../components/PropertiesModal.jsx";
 import '../components/PropertiesModal.css';
 
 function Files() {
