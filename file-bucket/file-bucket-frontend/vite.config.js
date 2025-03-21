@@ -6,11 +6,5 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-//   server: {
-//     port: 3000,
-//   },
-//   preview: {
-//     port: 8080,
-//   },
   base: '/', // This is crucial for proper routing
 });
