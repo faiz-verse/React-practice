@@ -1,3 +1,16 @@
+#title-container{
+    display: flex;
+    align-items: center;
+}
+
+#title-container img{
+    width: 75px;
+    height: 75px;
+    position: relative;
+    top: -15px;
+    left: 10px;
+}
+
 #points-wrapper{
     width: fit-content;
     height: auto;

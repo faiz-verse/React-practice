@@ -505,14 +505,12 @@ function Files() {
     return (
         <div id="file-page">
 
-            <h1
-                style={{
-                    transition: 'filter 0.4s ease-in-out, opacity 0.4s ease-in-out',
-                    filter: toggleModal ? 'blur(4px)' : 'blur(0px)',
-                    pointerEvents: toggleModal ? 'none' : 'auto', // ❌ Disables clicks when true
-                    opacity: toggleModal ? 0.6 : 1 // 🛑 Slightly fade out when disabled
-                }}
-            >File Bucket</h1>
+            <div id="title-container"><h1 style={{
+                transition: 'filter 0.4s ease-in-out, opacity 0.4s ease-in-out',
+                filter: toggleModal ? 'blur(4px)' : 'blur(0px)',
+                pointerEvents: toggleModal ? 'none' : 'auto', // ❌ Disables clicks when true
+                opacity: toggleModal ? 0.6 : 1 // 🛑 Slightly fade out when disabled
+            }} id="title">File Bucket</h1><img src="../public/FileBucket.svg" alt="logo.svg" /></div>
 
             <span id="bucket-url"
                 style={{

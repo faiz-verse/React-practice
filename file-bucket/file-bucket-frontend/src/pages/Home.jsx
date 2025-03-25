@@ -44,7 +44,7 @@ function Home({ uniqueURL, createURL, setCreateURL, inputRef }) {
 
     return (
         <div id="home-page">
-            <h1 id="title">File Bucket</h1>
+            <div id="title-container"><h1 id="title">File Bucket</h1><img src="../public/FileBucket.svg" alt="logo.svg" /></div>
 
             {/* Main heading */}
             <span id="info">Store & Share your files securely in few steps without registration</span>
