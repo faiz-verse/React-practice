@@ -412,7 +412,7 @@
     }
 
     #bucket-url:nth-child(2){
-        width: 120vw;
+        font-size: 1rem;
     }
 
     #file-page{
@@ -577,7 +577,7 @@
     }
 
     #bucket-url:nth-child(2){
-        width: 110vw;
+        font-size: 1.2rem;
     }
 
     #file-page{
