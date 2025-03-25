@@ -127,6 +127,14 @@
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
 
+    #title-container img{
+        width: 55px;
+        height: 55px;
+        position: relative;
+        top: -12.5px;
+        left: 10px;
+    }
+
     #points-wrapper{
         position: relative;
         left: 5vw;
@@ -134,7 +142,7 @@
     .point{
         width: 80vw;
         margin-top: 40px;
-        font-size: 1.05rem;
+        font-size: 14px;
         flex-direction: column;
         align-items: start;
         gap: 5px;
@@ -164,7 +172,7 @@
     }
     
     #unique-url, #create-url{
-        font-size: 1.1rem;
+        font-size: 16px;
     }
 
     #unique-url{
@@ -177,13 +185,8 @@
     }
     
     #create-url input {
-        all: unset;
         width: 90%;
         margin-top: 7px;
-        padding: 7px 10px;
-        background: rgba(255, 255, 255, 0.200);
-        border-radius: 7px;
-        caret-color: cornflowerblue;
     }
     
     #create-url input:focus {
@@ -193,25 +196,35 @@
     /* Button styling */
     #visit-url {
         margin-top: 7px;
-        font-size: 1.2rem;
+        font-size: 16px;
         padding: 7px 10px;
     }
     
     #disabled-info{
-        font-size: 1rem;
+        font-size: 10px;
         position: relative;
         top: 0px;
         left: 0px;
     }
     
     #disabled-info::before{
+        font-size: 14px;
         position: absolute;
-        left: -30px;
+        left: -29px;
     }
     
 }
 
 @media screen and (min-width: 480px) and (max-width: 600px) {
+
+    #title-container img{
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: -12.5px;
+        left: 10px;
+    }
+
     #points-wrapper{
         position: relative;
         left: 5vw;
@@ -219,7 +232,7 @@
     .point{
         width: 80vw;
         margin-top: 40px;
-        font-size: 1.1rem;
+        font-size: 15px;
         flex-direction: column;
         align-items: start;
         gap: 5px;
@@ -249,7 +262,7 @@
     }
     
     #unique-url, #create-url{
-        font-size: 1.2rem;
+        font-size: 16px;
     }
 
     #unique-url{
@@ -262,48 +275,50 @@
     }
     
     #create-url input {
-        all: unset;
         width: 90%;
         margin-top: 7px;
-        padding: 7px 10px;
-        background: rgba(255, 255, 255, 0.200);
-        border-radius: 7px;
-        caret-color: cornflowerblue;
-    }
-    
-    #create-url input:focus {
-        background:rgba(255, 255, 255, 0.300)
     }
     
     /* Button styling */
     #visit-url {
         margin-top: 7px;
-        font-size: 1.2rem;
+        font-size: 18px;
         padding: 7px 10px;
     }
     
     #disabled-info{
-        font-size: 1rem;
+        font-size: 12px;
         position: relative;
         top: 0px;
         left: 0px;
     }
     
     #disabled-info::before{
+        font-size: 15px;
         position: absolute;
         left: -30px;
     }
 }
 
 @media screen and (min-width: 600px) and (max-width: 768px) {
+
+    #title-container img{
+        width: 65px;
+        height: 65px;
+        position: relative;
+        top: -12.5px;
+        left: 10px;
+    }
+
     #points-wrapper{
         position: relative;
         left: 5vw;
     }
+
     .point{
         width: 80vw;
         margin-top: 40px;
-        font-size: 1.15rem;
+        font-size: 16px;
         flex-direction: column;
         align-items: start;
         gap: 5px;
@@ -333,7 +348,7 @@
     }
     
     #unique-url, #create-url{
-        font-size: 1.2rem;
+        font-size: 18px;
     }
 
     #unique-url{
@@ -346,34 +361,26 @@
     }
     
     #create-url input {
-        all: unset;
         width: 90%;
         margin-top: 7px;
-        padding: 7px 10px;
-        background: rgba(255, 255, 255, 0.200);
-        border-radius: 7px;
-        caret-color: cornflowerblue;
-    }
-    
-    #create-url input:focus {
-        background:rgba(255, 255, 255, 0.300)
     }
     
     /* Button styling */
     #visit-url {
         margin-top: 7px;
-        font-size: 1.2rem;
+        font-size: 18px;
         padding: 7px 10px;
     }
     
     #disabled-info{
-        font-size: 1rem;
+        font-size: 12px;
         position: relative;
-        top: 0px;
+        top: 3px;
         left: 0px;
     }
     
     #disabled-info::before{
+        font-size: 16px;
         position: absolute;
         left: -30px;
     }
@@ -387,7 +394,7 @@
     .point{
         width: 80vw;
         margin-top: 40px;
-        font-size: 1.2rem;
+        font-size: 18px;
         flex-direction: column;
         align-items: start;
         gap: 5px;
@@ -417,7 +424,7 @@
     }
     
     #unique-url, #create-url{
-        font-size: 1.3rem;
+        font-size: 20px;
     }
 
     #unique-url{
@@ -430,34 +437,26 @@
     }
     
     #create-url input {
-        all: unset;
         width: 90%;
         margin-top: 7px;
-        padding: 7px 10px;
-        background: rgba(255, 255, 255, 0.200);
-        border-radius: 7px;
-        caret-color: cornflowerblue;
-    }
-    
-    #create-url input:focus {
-        background:rgba(255, 255, 255, 0.300)
     }
     
     /* Button styling */
     #visit-url {
         margin-top: 7px;
-        font-size: 1.3rem;
+        font-size: 20px;
         padding: 7px 10px;
     }
     
     #disabled-info{
-        font-size: 1rem;
+        font-size: 14px;
         position: relative;
         top: 0px;
         left: 0px;
     }
     
     #disabled-info::before{
+        font-size: 18px;
         position: absolute;
         left: -30px;
     }
