@@ -96,6 +96,7 @@
     appearance: none;
     border: none;
     font-size: 1.3rem;
+    font-weight: 600;
     padding: 10px;
     border-radius: 7px;
     background-color: cornflowerblue;
@@ -197,7 +198,7 @@
     #visit-url {
         margin-top: 7px;
         font-size: 16px;
-        padding: 7px 10px;
+        padding: 10px 14px;
     }
     
     #disabled-info{
@@ -283,7 +284,7 @@
     #visit-url {
         margin-top: 7px;
         font-size: 18px;
-        padding: 7px 10px;
+        padding: 10px 14px;
     }
     
     #disabled-info{
@@ -369,7 +370,7 @@
     #visit-url {
         margin-top: 7px;
         font-size: 18px;
-        padding: 7px 10px;
+        padding: 10px 14px;
     }
     
     #disabled-info{
@@ -445,7 +446,7 @@
     #visit-url {
         margin-top: 7px;
         font-size: 20px;
-        padding: 7px 10px;
+        padding: 10px 14px;
     }
     
     #disabled-info{

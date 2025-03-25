@@ -72,6 +72,7 @@ function Home({ uniqueURL, createURL, setCreateURL, inputRef }) {
                             placeholder="type your link here"
                             value={createURL}
                             onChange={(e) => setCreateURL(e.target.value.replace(/\s+/g, "-"))} // Replace spaces with hyphens
+                            onKeyDown={(e) => e.key === "Enter" && handleCreateBucket(createURL)}
                         />
                     </div></div>
                     <div>

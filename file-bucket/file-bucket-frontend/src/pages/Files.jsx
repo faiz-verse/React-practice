@@ -531,7 +531,7 @@ function Files() {
                 }}
             >
                 <button id="create-new-button" onClick={() => navigate(`/`)}>
-                    <FiPlus size={20} color="white" />Create new bucket
+                    <FiPlus size={20} color="white" />Create bucket
                 </button>
                 <button id="destroy-button" onClick={() => {
                     if (!confirm("Are you sure you want to delete this bucket?\nIf you have uploaded any files, they will be deleted as well!")) {
