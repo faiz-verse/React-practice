@@ -1,14 +1,14 @@
-#bucket-info{
+#bucket-info {
     margin-top: 15px;
 }
 
-#loading-message{
+#loading-message {
     margin-top: 15px;
     font-size: 1.2rem;
     color: lightblue;
 }
 
-#error-message{
+#error-message {
     margin-top: 15px;
     font-size: 1.2rem;
 }
@@ -47,11 +47,11 @@
     color: white;
 }
 
-#copy-icon:active #fi-copy-icon{
+#copy-icon:active #fi-copy-icon {
     scale: 0.9;
 }
 
-#copy-notifier-wrapper{
+#copy-notifier-wrapper {
     position: relative;
 }
 
@@ -70,14 +70,14 @@
     transition: all 0.1s ease-in-out;
 }
 
-#copied-info{
+#copied-info {
     color: rgb(177, 177, 177);
     font-size: 0.9rem;
     font-style: italic;
     align-self: center;
 }
 
-#countdown-wrapper{
+#countdown-wrapper {
     margin-top: 15px;
     display: flex;
     flex-direction: column;
@@ -112,7 +112,8 @@
     cursor: pointer;
 }
 
-#create-new-button:active, #destroy-button:active{
+#create-new-button:active,
+#destroy-button:active {
     scale: 0.96;
 }
 
@@ -124,10 +125,16 @@
     background-color: tomato;
 }
 
-#files-buttons-container{
+#files-buttons-container {
     margin-top: 15px;
     width: fit-content;
     height: fit-content;
+    display: flex;
+    gap: 15px;
+}
+
+#download-delete-button-container {
+    width: auto;
     display: flex;
     gap: 15px;
 }
@@ -148,7 +155,8 @@
     transition: all 0.15s ease-in-out;
     cursor: pointer;
 }
-#upload-files-button:active{
+
+#upload-files-button:active {
     scale: 0.96;
 }
 
@@ -168,7 +176,8 @@
     transition: all 0.15s ease-in-out;
     cursor: pointer;
 }
-#download-files-button:active{
+
+#download-files-button:active {
     scale: 0.96;
 }
 
@@ -188,11 +197,12 @@
     transition: all 0.15s ease-in-out;
     cursor: pointer;
 }
-#delete-files-button:active{
+
+#delete-files-button:active {
     scale: 0.96;
 }
 
-#uploaded-files{
+#uploaded-files {
     width: 100%;
     height: auto;
     align-self: center;
@@ -202,7 +212,7 @@
     position: relative;
 }
 
-#file-item-header{
+#file-item-header {
     width: 100%;
     height: 40px;
     align-self: center;
@@ -211,30 +221,35 @@
     border-bottom: 2px solid white;
 }
 
-.file-header{
+.file-header {
     font-size: 1.1rem;
     font-weight: 500;
     position: relative;
 }
-.file-header:nth-child(1){
+
+.file-header:nth-child(1) {
     width: 40%;
 }
-.file-header:nth-child(2){
+
+.file-header:nth-child(2) {
     width: 20%;
 }
-.file-header:nth-child(3){
+
+.file-header:nth-child(3) {
     width: 15%;
     padding-left: 30px;
 }
-.file-header:nth-child(4){
+
+.file-header:nth-child(4) {
     width: 20%;
 }
-.file-header:nth-child(5){
+
+.file-header:nth-child(5) {
     margin-right: 0px;
     width: 5%;
 }
 
-.file-item{
+.file-item {
     width: 100%;
     height: auto;
     padding: 10px 0px;
@@ -244,11 +259,12 @@
     border-bottom: 1px solid rgb(100, 100, 100);
 }
 
-.file-info{
+.file-info {
     font-size: 1rem;
     position: relative;
 }
-.file-name{
+
+.file-name {
     width: 40%;
     text-decoration: underline;
     text-decoration-color: cornflowerblue;
@@ -257,25 +273,29 @@
     cursor: pointer;
     transition: scale 0.15s ease-in-out;
 }
-.file-name:active{
+
+.file-name:active {
     scale: 0.98;
 }
 
-.file-type{
+.file-type {
     width: 20%;
 }
-.file-size{
+
+.file-size {
     width: 15%;
     padding-left: 30px;
 }
-.file-upload{
+
+.file-upload {
     width: 20%;
 }
-.file-more{
+
+.file-more {
     width: 5%;
 }
 
-.more-option-icon{
+.more-option-icon {
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -286,26 +306,26 @@
     transition: all 0.15s ease-in-out;
 }
 
-.fi-more-icon{
+.fi-more-icon {
     color: rgba(255, 255, 255, 0.300);
     transition: all 0.15s ease-in-out;
 }
 
-.more-option-icon:hover .fi-more-icon{
+.more-option-icon:hover .fi-more-icon {
     color: white;
 }
 
-.more-option-icon:active .fi-more-icon{
+.more-option-icon:active .fi-more-icon {
     color: white;
 }
 
-.more-option-wrapper{
+.more-option-wrapper {
     /* height: 1px;
     width: 1px; */
     position: relative;
 }
 
-.more-option{
+.more-option {
     width: 150px;
     height: auto;
     padding: 7px;
@@ -325,7 +345,7 @@
     z-index: 10;
 }
 
-.download-option{
+.download-option {
     width: 100%;
     height: 30px;
     display: flex;
@@ -335,10 +355,12 @@
     transition: all 0.15s ease-in-out;
     cursor: pointer;
 }
-.download-option:active{
+
+.download-option:active {
     scale: 0.96;
 }
-.properties-option{
+
+.properties-option {
     width: 100%;
     height: 30px;
     display: flex;
@@ -348,10 +370,12 @@
     transition: all 0.15s ease-in-out;
     cursor: pointer;
 }
-.properties-option:active{
+
+.properties-option:active {
     scale: 0.96;
 }
-.delete-option{
+
+.delete-option {
     width: 100%;
     height: 30px;
     padding-top: 5px;
@@ -363,6 +387,510 @@
     transition: all 0.15s ease-in-out;
     cursor: pointer;
 }
-.delete-option:active{
+
+.delete-option:active {
     scale: 0.96;
+}
+
+#qr-code{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    position: absolute;
+    top: 120px;
+    right: 60px;
+}
+
+/* RESPONSITIVITY */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    #bucket-url{
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #bucket-url:nth-child(2){
+        width: 120vw;
+    }
+
+    #file-page{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    #loading-message {
+        margin-top: 26.5vh;
+        font-size: 1.05rem;
+    }
+
+    #error-message {
+        margin-top: 26.5vh;
+        font-size: 1.05rem;
+    }
+
+    #file-page-content {
+        width: 100%;
+        margin-top: 25vh;
+    }
+
+    #copy-container {
+        flex-direction: column;
+    }
+
+    #copy-icon {
+        position: absolute;
+        right: -20px;
+        top: 10px;
+    }
+
+    #copy-notifier-wrapper {
+        position: absolute;
+        right: 7px;
+        top: -15px;
+    }
+
+    #countdown-wrapper {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #buttons-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        top: 35vh;
+        left: 0;
+    }
+
+    #create-new-button{
+        width: 45%;
+        height: auto;
+        max-height: 30px;
+    }
+
+    #destroy-button{
+        width: 40%;
+        height: auto;
+        max-height: 30px;
+    }
+
+    #qr-code{
+        margin: auto;
+        position: absolute;
+        top: 17vh;
+        left: 30vw;
+    }
+
+    #files-buttons-container {
+        margin-top: 15px;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #download-delete-button-container {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+    }
+
+    #upload-files-button {
+        font-size: 1rem;
+        width: 96.5%;
+    }
+
+    #download-files-button,
+    #delete-files-button {
+        width: 50%;
+    }
+
+    .file-header:nth-child(1) {
+        width: 80%;
+    }
+
+    .file-header:nth-child(2) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(3) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(4) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(5) {
+        margin-right: 0px;
+        width: 15%;
+    }
+
+    .file-item {
+        width: 100%;
+        height: auto;
+        max-height: 40px;
+    }
+
+    .file-name {
+        width: 80%;
+    }
+
+    .file-type {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-size {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-upload {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-more {
+        width: 5%;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 600px) {
+
+    #bucket-url{
+        font-size: 1.4rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #bucket-url:nth-child(2){
+        width: 110vw;
+    }
+
+    #file-page{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    #loading-message {
+        margin-top: 26.5vh;
+        font-size: 1.05rem;
+    }
+
+    #error-message {
+        margin-top: 26.5vh;
+        font-size: 1.05rem;
+    }
+
+    #file-page-content {
+        width: 100%;
+        margin-top: 25vh;
+    }
+
+    #copy-container {
+        flex-direction: column;
+    }
+
+    #copy-icon {
+        position: absolute;
+        right: -20px;
+        top: 10px;
+    }
+
+    #copy-notifier-wrapper {
+        position: absolute;
+        right: 7px;
+        top: -15px;
+    }
+
+    #countdown-wrapper {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #buttons-container {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        top: 35vh;
+        left: 0;
+    }
+
+    #create-new-button{
+        width: 45%;
+        height: auto;
+        max-height: 30px;
+    }
+
+    #destroy-button{
+        width: 40%;
+        height: auto;
+        max-height: 30px;
+    }
+
+    #qr-code{
+        margin: auto;
+        position: absolute;
+        top: 17vh;
+        left: 32.5vw;
+    }
+
+    #files-buttons-container {
+        margin-top: 15px;
+        width: 95%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #download-delete-button-container {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+    }
+
+    #upload-files-button {
+        font-size: 1rem;
+        width: 96.5%;
+    }
+
+    #download-files-button,
+    #delete-files-button {
+        width: 50%;
+    }
+
+    .file-header:nth-child(1) {
+        width: 80%;
+    }
+
+    .file-header:nth-child(2) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(3) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(4) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(5) {
+        margin-right: 0px;
+        width: 15%;
+    }
+
+    .file-item {
+        width: 100%;
+        height: auto;
+        max-height: 40px;
+    }
+
+    .file-name {
+        width: 80%;
+    }
+
+    .file-type {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-size {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-upload {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-more {
+        width: 5%;
+    }
+
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) {
+
+    #bucket-url{
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #file-page{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    #loading-message {
+        margin-top: 26.5vh;
+        font-size: 1.05rem;
+    }
+
+    #error-message {
+        margin-top: 26.5vh;
+        font-size: 1.05rem;
+    }
+
+    #file-page-content {
+        width: 100%;
+        margin-top: 25vh;
+    }
+
+    #copy-container {
+        flex-direction: column;
+    }
+
+    #copy-icon {
+        position: absolute;
+        right: -20px;
+        top: 10px;
+    }
+
+    #copy-notifier-wrapper {
+        position: absolute;
+        right: 7px;
+        top: -15px;
+    }
+
+    #countdown-wrapper {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #buttons-container {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        top: 35vh;
+        left: 0;
+    }
+
+    #create-new-button{
+        width: 45%;
+        height: auto;
+        max-height: 30px;
+    }
+
+    #destroy-button{
+        width: 40%;
+        height: auto;
+        max-height: 30px;
+    }
+
+    #qr-code{
+        margin: auto;
+        position: absolute;
+        top: 17vh;
+        left: 32.5vw;
+    }
+
+    #files-buttons-container {
+        margin-top: 15px;
+        width: 95%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #download-delete-button-container {
+        width: 99%;
+        display: flex;
+        gap: 20px;
+    }
+
+    #upload-files-button {
+        font-size: 1rem;
+        width: 96.5%;
+    }
+
+    #download-files-button,
+    #delete-files-button {
+        width: 50%;
+    }
+
+    .file-header:nth-child(1) {
+        width: 80%;
+    }
+
+    .file-header:nth-child(2) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(3) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(4) {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-header:nth-child(5) {
+        margin-right: 0px;
+        width: 15%;
+    }
+
+    .file-item {
+        width: 100%;
+        height: auto;
+        max-height: 40px;
+    }
+
+    .file-name {
+        width: 80%;
+    }
+
+    .file-type {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-size {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-upload {
+        width: 0%;
+        visibility: hidden;
+    }
+
+    .file-more {
+        width: 5%;
+    }
 }

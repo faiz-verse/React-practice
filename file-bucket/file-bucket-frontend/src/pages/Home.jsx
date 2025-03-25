@@ -43,52 +43,52 @@ function Home({ uniqueURL, createURL, setCreateURL, inputRef }) {
     };
 
     return (
-        <>
-            <h1>File Bucket</h1>
-            
+        <div id="home-page">
+            <h1 id="title">File Bucket</h1>
+
             {/* Main heading */}
-            <span>Store & Share your files securely in few steps without registration</span>
-            
+            <span id="info">Store & Share your files securely in few steps without registration</span>
+
             <div id="points-wrapper">
-                
+
                 {/* point 1 */}
                 <div className="point">
-                    Generated link is <span id="unique-url" onClick={()=>handleCreateBucket(uniqueURL)}>{uniqueURL}</span> 
-                    Click <HiCursorClick style={{marginLeft: '5px'}} size={20} color='white'/> <FiChevronRight size={20} color='white'/> Visit created bucket <FiChevronRight size={20} color='white'/> Start uploading your files
+                    <div className="point-content">Generated link is <span id="unique-url" onClick={() => handleCreateBucket(uniqueURL)}>{uniqueURL}</span></div>
+                    <div className="point-content">Click <HiCursorClick style={{ marginLeft: '5px' }} size={20} color='white' /> <FiChevronRight size={20} color='white' /></div><div>Visit created bucket <FiChevronRight size={20} color='white' /></div><div>Start uploading your files</div>
                 </div>
 
                 {/* point 2 */}
                 <div className="point">
-                    After you visit & complete your uploads, make sure that you copy and keep your link safe for future.
+                    <div className="point-content">After you visit & complete your uploads, make sure that you copy and keep your link safe for future.</div>
                 </div>
 
                 {/* point 3 */}
                 <div className="point">
-                    Create your own link
-                    <div id="create-url" onClick={() => inputRef.current.focus()}>
-                        https://filebucket.com/ <input
+                    <div className="point-content">Create your own link</div>
+                    <div className="point-content"><div id="create-url" onClick={() => inputRef.current.focus()}>
+                        https://file-bucket.onrender.com/ <input
                             type="text"
                             ref={inputRef}
                             placeholder="type your link here"
                             value={createURL}
                             onChange={(e) => setCreateURL(e.target.value.replace(/\s+/g, "-"))} // Replace spaces with hyphens
                         />
-                    </div>
+                    </div></div>
+                    <div>
+                        {/* Create Bucket button, calls handleCreateBucket when clicked */}
+                        <button id="visit-url" disabled={createURL.length <= 3 || loading} onClick={() => handleCreateBucket(createURL)}>
 
-                    {/* Create Bucket button, calls handleCreateBucket when clicked */}
-                    <button id="visit-url" disabled={createURL.length <= 3 || loading} onClick={()=>handleCreateBucket(createURL)}>
-                        
-                        {loading ? "Creating..." : "Create/Visit bucket"}
-                    </button>
+                            {loading ? "Creating..." : "Create/Visit bucket"}
+                        </button></div>
 
                     {/* Display warning if URL is too short */}
-                    {createURL.length <= 3 && <div id="disabled-info">Link must contain at least 3 characters</div>}
+                    {createURL.length <= 3 && <div className="point-content" id="disabled-info">Link must contain at least 3 characters</div>}
 
                     {/* Display error message if bucket creation fails */}
-                    {error && <div id="error-message">{error}</div>}
+                    {error && <div className="point-content" id="error-message">{error}</div>}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

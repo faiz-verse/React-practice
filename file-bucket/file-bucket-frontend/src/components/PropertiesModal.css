@@ -134,3 +134,28 @@
 #property-file-name:active{
     scale: 0.98;
 }
+
+/* RESPONSITIVITY */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    #properties-modal{
+        position: absolute;
+        top: 15%;
+        left: calc(50% - 45vw);
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 600px) {
+    #properties-modal{
+        position: absolute;
+        top: 15%;
+        left: calc(50% - 45vw);
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) {
+    #properties-modal{
+        position: absolute;
+        top: 15%;
+        left: calc(50% - 45vw);
+    }
+}

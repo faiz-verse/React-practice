@@ -15,7 +15,55 @@
 
 body {
     margin: 0;
-    padding: 30px;
     min-width: 320px;
     min-height: 100vh;
+}
+
+/* RESPONSITIVITY */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    body{
+        padding: 20px;
+    }
+    h1{
+        font-size: 2rem;
+    }
+    span{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 600px) {
+    body{
+        padding: 25px;
+    }
+    h1{
+        font-size: 2.25rem;
+    }
+    span {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) {
+    body{
+        padding: 30px;
+    }
+    h1{
+        font-size: 2.5rem;
+    }
+    span{
+        font-size: 1.75rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 3000px) {
+    body{
+        padding: 35px;
+    }
+    h1{
+        font-size: 3rem;
+    }
+    span{
+        font-size: 2rem;
+    }
 }

@@ -503,7 +503,7 @@ function Files() {
 
 
     return (
-        <>
+        <div id="file-page">
 
             <h1
                 style={{
@@ -514,14 +514,14 @@ function Files() {
                 }}
             >File Bucket</h1>
 
-            <span
+            <span id="bucket-url"
                 style={{
                     transition: 'filter 0.4s ease-in-out, opacity 0.4s ease-in-out',
                     filter: toggleModal ? 'blur(4px)' : 'blur(0px)',
                     pointerEvents: toggleModal ? 'none' : 'auto', // ❌ Disables clicks when true
                     opacity: toggleModal ? 0.6 : 1 // 🛑 Slightly fade out when disabled
                 }}
-            >Bucket URL - <b>{fullURL}</b></span>
+            ><text>Bucket URL - </text><b>{fullURL}</b></span>
 
             {/* Buttons for actions */}
             <div id="buttons-container"
@@ -545,9 +545,11 @@ function Files() {
                 </button>
             </div>
 
-            <div style={{ height: "auto", width: "fit-content", fontWeight:'500' , position: "absolute", top: "250px", right: "70px"}}>Scan to Share!</div>
             {/* BucketQR code */}
-            <div id="qrcode" style={{ height: "auto", margin: "0 auto", maxWidth: 120, width: "100%", position: "absolute", top: "120px", right: "60px" }}>
+            <div id="qr-code" style={{
+                transition: 'filter 0.4s ease-in-out, opacity 0.4s ease-in-out',
+                filter: toggleModal ? 'blur(4px)' : 'blur(0px)', height: "auto", margin: "0", maxWidth: 120, width: "100%"
+            }}>
                 <QRCode
                     bgColor="transparent"
                     fgColor="white"
@@ -556,6 +558,7 @@ function Files() {
                     value={"https://file-bucket.onrender.com/" + url}
                     viewBox={`0 0 256 256`}
                 />
+                <div id="qr-code-info">Scan to Share!</div>
             </div>
 
             {loading ? ( // 🔄 Show loading while waiting for the bucket status
@@ -563,7 +566,7 @@ function Files() {
             ) : bucketStatus !== "active" ? ( // 🚨 Show error only if bucket is expired/destroyed
                 <div id='error-message' style={{ color: "red" }}>{error}</div>
             ) : (
-                <div
+                <div id="file-page-content"
                     style={{
                         transition: 'filter 0.4s ease-in-out, opacity 0.4s ease-in-out',
                         filter: toggleModal ? 'blur(4px)' : 'blur(0px)',
@@ -618,16 +621,18 @@ function Files() {
                             <FiUpload size={20} color="white" />
                             {uploading ? "Uploading..." : files.length > 0 ? "Upload more files" : "Upload files"}
                         </button>
-                        {/* download files Button */}
-                        <button id="download-files-button" onClick={() => files.length > 1 ? handleDownloadAllFiles() : handleDownloadFile(files[0])}>
-                            <FiDownload size={20} color="white" />
-                            {files.length > 1 ? "Download files" : "Download file"}
-                        </button>
-                        {/* delete files Button */}
-                        <button id="delete-files-button" onClick={() => files.length > 1 ? handleDeleteAllFiles() : handleDeleteFile(files[0])}>
-                            <FiTrash size={20} color="white" />
-                            {files.length > 1 ? "Delete files" : "Delete file"}
-                        </button>
+                        <div id="download-delete-button-container">
+                            {/* download files Button */}
+                            <button id="download-files-button" onClick={() => files.length > 1 ? handleDownloadAllFiles() : handleDownloadFile(files[0])}>
+                                <FiDownload size={20} color="white" />
+                                {files.length > 1 ? "Download files" : "Download file"}
+                            </button>
+                            {/* delete files Button */}
+                            <button id="delete-files-button" onClick={() => files.length > 1 ? handleDeleteAllFiles() : handleDeleteFile(files[0])}>
+                                <FiTrash size={20} color="white" />
+                                {files.length > 1 ? "Delete files" : "Delete file"}
+                            </button>
+                        </div>
                     </div>
 
                     {/* Display Uploaded Files */}
@@ -709,7 +714,7 @@ function Files() {
             <PropertiesModal toggleModal={toggleModal} setToggleModal={setToggleModal} fileProperties={fileProperties} formatFileSize={formatFileSize} calculateTimeActive={calculateTimeActive} timeLeft={timeLeft} handleDownloadFile={handleDownloadFile} handleDeleteFile={handleDeleteFile} handleOpenFile={handleOpenFile} />
 
 
-        </>
+        </div>
 
     );
 
