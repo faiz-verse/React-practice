@@ -539,6 +539,10 @@
         font-size: 14px;
     }
 
+    .file-header{
+        font-size: 14px;
+    }
+
     .file-header:nth-child(1) {
         width: 80%;
     }
@@ -601,13 +605,13 @@
 @media screen and (min-width: 480px) and (max-width: 600px) {
 
     #bucket-url{
-        font-size: 12px;
+        font-size: 14px;
         display: flex;
         flex-direction: column;
     }
 
     #bucket-url:nth-child(2){
-        font-size: 14px;
+        font-size: 16px;
     }
 
     #file-page{
@@ -619,12 +623,12 @@
 
     #loading-message {
         margin-top: 215px;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     #error-message {
         margin-top: 215px;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     #file-page-content {
@@ -634,7 +638,7 @@
 
     #bucket-info {
         margin-top: 15px;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     #copy-container {
@@ -643,7 +647,7 @@
     }
 
     #copied-info{
-        font-size: 12px;
+        font-size: 14px;
     }
 
     #copy-icon {
@@ -653,14 +657,14 @@
     }
 
     #copy-notifier-wrapper {
-        font-size: 12px;
+        font-size: 14px;
         position: absolute;
         right: 0px;
         top: -15px;
     }
 
     #countdown-wrapper {
-        font-size: 14px;
+        font-size: 16px;
         margin-top: 15px;
         display: flex;
         flex-direction: column;
@@ -668,16 +672,16 @@
     }
 
     #storage-used{
-        font-size: 14px;
+        font-size: 16px;
     }
 
     #buttons-container {
-        font-size: 14px;
+        font-size: 16px;
         width: 100%;
         display: flex;
         justify-content: center;
         gap: 20px;
-        top: 280px;
+        top: 290px;
         left: 0;
     }
 
@@ -694,15 +698,15 @@
     }
 
     #qr-code{
-        font-size: 14px;
+        font-size: 16px;
         margin: auto;
         position: absolute;
-        top: 125px;
+        top: 135px;
         left: 30vw;
     }
 
     #files-buttons-container {
-        margin-top: 15px;
+        margin-top: 16px;
         width: 100%;
         height: fit-content;
         display: flex;
@@ -718,18 +722,18 @@
     }
 
     #upload-files-button {
-        font-size: 14px;
+        font-size: 16px;
         width: 96.5%;
     }
 
     #download-files-button,
     #delete-files-button {
-        font-size: 14px;
+        font-size: 16px;
         width: 50%;
     }
 
     #uploaded-files{
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .file-header:nth-child(1) {
@@ -786,7 +790,7 @@
     }
 
     .more-option{
-        font-size: 14px;
+        font-size: 16px;
         background: white;
     }
 }
@@ -794,11 +798,15 @@
 @media screen and (min-width: 600px) and (max-width: 768px) {
 
     #bucket-url{
-        font-size: 1.5rem;
+        font-size: 16px;
         display: flex;
         flex-direction: column;
     }
-    
+
+    #bucket-url:nth-child(2){
+        font-size: 18px;
+    }
+
     #file-page{
         display: flex;
         flex-direction: column;
@@ -807,74 +815,92 @@
     }
 
     #loading-message {
-        margin-top: 26.5vh;
-        font-size: 1.05rem;
+        margin-top: 225px;
+        font-size: 18px;
     }
 
     #error-message {
-        margin-top: 26.5vh;
-        font-size: 1.05rem;
+        margin-top: 225px;
+        font-size: 18px;
     }
 
     #file-page-content {
         width: 100%;
-        margin-top: 25vh;
+        margin-top: 210px;
+    }
+
+    #bucket-info {
+        margin-top: 15px;
+        font-size: 18px;
     }
 
     #copy-container {
+        font-size: 16px;
         flex-direction: column;
+    }
+
+    #copied-info{
+        font-size: 14px;
     }
 
     #copy-icon {
         position: absolute;
-        right: -20px;
+        right: -30px;
         top: 10px;
     }
 
     #copy-notifier-wrapper {
+        font-size: 14px;
         position: absolute;
-        right: 7px;
+        right: 0px;
         top: -15px;
     }
 
     #countdown-wrapper {
+        font-size: 18px;
         margin-top: 15px;
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
+    #storage-used{
+        font-size: 18px;
+    }
+
     #buttons-container {
-        width: 95%;
+        font-size: 18px;
+        width: 100%;
         display: flex;
         justify-content: center;
         gap: 20px;
-        top: 35vh;
+        top: 310px;
         left: 0;
     }
 
     #create-new-button{
-        width: 45%;
+        width: 50%;
         height: auto;
         max-height: 30px;
     }
 
     #destroy-button{
-        width: 40%;
+        width: 45%;
         height: auto;
         max-height: 30px;
     }
 
     #qr-code{
+        font-size: 16px;
         margin: auto;
         position: absolute;
-        top: 17vh;
-        left: 32.5vw;
+        top: 150px;
+        left: 30vw;
     }
 
     #files-buttons-container {
-        margin-top: 15px;
-        width: 95%;
+        margin-top: 18px;
+        width: 100%;
         height: fit-content;
         display: flex;
         flex-direction: column;
@@ -883,19 +909,24 @@
     }
 
     #download-delete-button-container {
-        width: 99%;
+        width: 100%;
         display: flex;
         gap: 20px;
     }
 
     #upload-files-button {
-        font-size: 1rem;
+        font-size: 18px;
         width: 96.5%;
     }
 
     #download-files-button,
     #delete-files-button {
+        font-size: 18px;
         width: 50%;
+    }
+
+    #uploaded-files{
+        font-size: 18px;
     }
 
     .file-header:nth-child(1) {
@@ -949,5 +980,10 @@
 
     .file-more {
         width: 5%;
+    }
+
+    .more-option{
+        font-size: 16px;
+        background: white;
     }
 }
