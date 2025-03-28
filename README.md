@@ -12,5 +12,5 @@ Check out the practice works from the links below:
 ### 🔥 About File Bucket  
 File Bucket is a **file-sharing web app** that allows users to upload and **share files via unique or custom links** 😃<br>
 With features like **temporary storage** and an easy-to-use interface, it's definitely worth your time! 🚀<br>
-<br><br>
+<br>
 Feel free to explore and share your feedback! 😊  
