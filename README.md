@@ -10,7 +10,7 @@ Check out the practice works from the links below:
 - **🔥 File Bucket** ➡ 🔗 https://file-bucket.onrender.com  
 
 ### 🔥 About File Bucket  
-File Bucket is a **file-sharing web app** that allows users to upload and **share files via unique or custom links** 😃
-With features like **temporary storage** and an easy-to-use interface, it's definitely worth your time! 🚀  
-
+File Bucket is a **file-sharing web app** that allows users to upload and **share files via unique or custom links** 😃<br>
+With features like **temporary storage** and an easy-to-use interface, it's definitely worth your time! 🚀<br>
+<br><br>
 Feel free to explore and share your feedback! 😊  
