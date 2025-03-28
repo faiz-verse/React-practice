@@ -1,7 +1,12 @@
-# React-practice
-practice works for react
+# React Practice  
 
-# Visit practices from links mentioned below:
-**chat ui** ➡ 🔗 https://react-practice-rndk.onrender.com<br>
-**my todos** ➡ 🔗 https://my-todos-8avq.onrender.com<br>
-**🔥 file bucket** ➡ 🔗 https://file-bucket.onrender.com
+This repository contains my **React practice projects**. These are small experiments and learning exercises to sharpen my React skills.  
+
+## 🚀 Live Projects  
+Check out the practice works from the links below:  
+
+- **🗨️ Chat UI** ➡ [Live Demo](https://react-practice-rndk.onrender.com)  
+- **✅ My To-Do List** ➡ [Live Demo](https://my-todos-8avq.onrender.com)  
+- **🔥 File Bucket** ➡ [Live Demo](https://file-bucket.onrender.com)  
+
+Feel free to explore and share your feedback! 😊  
