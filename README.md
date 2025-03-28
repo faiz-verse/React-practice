@@ -2,5 +2,6 @@
 practice works for react
 
 # Visit practices from links mentioned below:
-**chat-ui** ➡ 🔗 https://react-practice-rndk.onrender.com<br>
-**mytodos** ➡ 🔗 https://my-todos-8avq.onrender.com
+**chat ui** ➡ 🔗 https://react-practice-rndk.onrender.com<br>
+**my todos** ➡ 🔗 https://my-todos-8avq.onrender.com
+**🔥 file bucket** ➡ 🔗 https://file-bucket.onrender.com
