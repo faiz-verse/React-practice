@@ -143,6 +143,14 @@
         top: 15%;
         left: calc(50% - 45vw);
     }
+
+    #modal-buttons-container{
+        gap: 10px;
+    }
+    
+    .modal-button{
+        font-size: 10px;
+    }
 }
 
 @media screen and (min-width: 480px) and (max-width: 600px) {
