@@ -510,7 +510,14 @@ function Files() {
                 filter: toggleModal ? 'blur(4px)' : 'blur(0px)',
                 pointerEvents: toggleModal ? 'none' : 'auto', // ❌ Disables clicks when true
                 opacity: toggleModal ? 0.6 : 1 // 🛑 Slightly fade out when disabled
-            }} id="title">File Bucket</h1><img src="/FileBucket.svg" alt="logo.svg" /></div>
+            }} id="title">File Bucket</h1><img src="/FileBucket.svg" alt="logo.svg" 
+            style={{
+                transition: 'filter 0.4s ease-in-out, opacity 0.4s ease-in-out',
+                filter: toggleModal ? 'blur(4px)' : 'blur(0px)',
+                pointerEvents: toggleModal ? 'none' : 'auto', // ❌ Disables clicks when true
+                opacity: toggleModal ? 0.6 : 1 // 🛑 Slightly fade out when disabled
+            }}
+            /></div>
 
             <span id="bucket-url"
                 style={{
