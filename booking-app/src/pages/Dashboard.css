@@ -1,0 +1,137 @@
+#dashboard{
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#dashboard-nav{
+    width: 100vw;
+    height: 100px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+#dashboard-nav #container-options{
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+
+    background: rgb(232, 249, 255);
+
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    left: 5%;
+    overflow: hidden;
+}
+
+#container-options .option{
+    width: 23.3%;
+    height: 100%;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+#container-options .option:nth-child(4){
+    width: 30%;
+}
+
+#dashboard-nav #container-date{
+    width: fit-content;
+    height: 40px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    position: absolute;
+    left: (50%);
+
+    overflow: hidden;
+}
+
+#container-date #prev, #container-date #next{
+    all: unset;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(232, 246, 255);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    
+}
+
+#container-date span{
+    font-weight: 600;
+}
+
+#dashboard-nav #buttons-container{
+    width: fit-content;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    position: absolute;
+    right: 10%;
+
+    overflow: hidden;
+}
+
+#buttons-container #new-appointment{
+    all: unset;
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgb(232, 246, 255);
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 5px;
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+#buttons-container #profile-btn{
+    all: unset;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(232, 246, 255);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+#calendar-content{
+    position: relative;
+    top: 100px;
+}

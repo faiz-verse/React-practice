@@ -1,0 +1,12 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}

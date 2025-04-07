@@ -1,0 +1,252 @@
+#set-appointment-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: none;
+    /* Set to 'block' when you want to show the modal */
+
+    overflow: hidden;
+}
+
+#appointment-content-wrapper {
+    height: 580px;
+
+    padding: 0px 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    scrollbar-width: thin;
+    scrollbar-color: #999 transparent;
+}
+
+#appointment-content-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+#modal-title {
+    background: white;
+
+    mask-image: linear-gradient(to bottom, black 80%, transparent);
+
+    width: 100%;
+    height: 70px;
+    font-size: 20px;
+    font-weight: bold;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+}
+
+#set-appointment-modal>div {
+    margin-bottom: 12px;
+}
+
+#appointment-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#appointment-buttons button {
+    flex: 1;
+    padding: 10px 16px;
+    margin: 0 6px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#appointment-cancel {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+#appointment-cancel:hover {
+    background-color: #c0392b;
+}
+
+#appointment-add {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+#appointment-add:hover {
+    background-color: #27ae60;
+}
+
+
+/* MODAL CONTENT */
+
+#appointment-type {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#appointment-title,
+#appointment-date,
+#appointment-timezone,
+#appointment-duration,
+#appointment-time-slot {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#appointment-type span,
+#appointment-title span,
+#appointment-date span,
+#appointment-timezone span,
+#appointment-duration span,
+#appointment-time-slot span {
+    color: gray;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    border: 1px solid rgb(175, 175, 175);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 35px;
+    font-size: 14px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+select {
+    border: 1px solid rgb(175, 175, 175);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 35px;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px 5px;
+}
+
+#date-container {
+    background: rgb(241, 241, 241);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#appointment-date #appointment-container-month {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#appointment-date #appointment-container-month #prev,
+#appointment-date #appointment-container-month #next {
+    all: unset;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+
+    cursor: pointer;
+}
+
+#appointment-date #appointment-container-month #prev:hover,
+#appointment-date #appointment-container-month #next:hover {
+    background: rgb(221, 221, 221);
+}
+
+#appointment-date #appointment-container-month span {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+
+#appointment-date #appointment-calendar {
+    color: rgb(65, 65, 65);
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    border-radius: 5px;
+}
+
+.appointment-calendar-header {
+    font-weight: 600;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.appointment-calendar-cell {
+    border-radius: 50px;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.appointment-calendar-cell.disabled {
+    color: rgb(160, 160, 160);
+    background: rgb(221, 221, 221);
+    pointer-events: none;
+}
+
+.appointment-calendar-cell:hover {
+    background: rgb(221, 221, 221);
+}
+
+.appointment-calendar-cell.not-date {
+    all: unset;
+}
+
+.appointment-calendar-cell.selected {
+    background-color: dodgerblue;
+    color: white;
+}
+
+#appointment-timezone {}
+
+#appointment-duration {}
+
+#time-slot-wrapper {
+    font-size: 14px;
+    padding: 0px 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.time-slot{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+
+    cursor: pointer;
+}
+
+.time-slot:hover{
+    background: rgb(230, 242, 255);
+}
+
+.time-slot.selected{
+    background-color: dodgerblue;
+    color: white;
+}
