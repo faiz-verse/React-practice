@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+
 import { BsPlus, BsPerson, BsChevronRight, BsChevronLeft } from "react-icons/bs";
 
 import './Dashboard.css'
@@ -32,23 +32,18 @@ function Dashboard() {
     };
 
     // FOR APPOINTMENTS
-    const [appointments, setAppointments] = useState([])
     const [toggleAppointmentModal, setToggleAppointmentModal] = useState(false)
 
-    const [appointmentJSON, setAppointmentJSON] = useState([])
-
-    // function to store the appointments
-    const saveAppointments =  (appointmentToStore) => {
-        localStorage.setItem("appointments", JSON.stringify(appointmentToStore))
-    }
+    const [appointments, setAppointments] = useState([])
 
     // Load todos from local storage when the app starts
-    useEffect(() => {
-        const storedTodos = localStorage.getItem('todos');
-        if (storedTodos) {
-            setTodos(JSON.parse(storedTodos)); // ✅ Load saved todos
+    useEffect(()=> {
+        const storedAppointments = localStorage.getItem('appointments');
+        if (storedAppointments) {
+            setAppointments(JSON.parse(storedAppointments))
+            console.log("✅ Updated stored appointments \n", JSON.parse(storedAppointments))
         }
-    }, []);
+    }, [])
 
     return (
         <div id='dashboard'>
@@ -82,7 +77,7 @@ function Dashboard() {
                 {activeView === "appointments" && <Appointments/>}
             </div>
 
-            <AppointmentModal toggleAppointmentModal={toggleAppointmentModal} setToggleAppointmentModal={setToggleAppointmentModal} monthNames={monthNames}/>
+            <AppointmentModal toggleAppointmentModal={toggleAppointmentModal} setToggleAppointmentModal={setToggleAppointmentModal} monthNames={monthNames} appointments={appointments} setAppointments={setAppointments}/>
 
         </div>
     )

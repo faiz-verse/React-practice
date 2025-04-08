@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import { color, motion } from "framer-motion";
+// import { Link } from 'react-router-dom'  //WAY 1
+import { useNavigate } from 'react-router-dom'  //WAY 2
 
 import './Home.css'
 
 function Home() {
+
+    // TO enable navigation WAY 2
+    const navigate = useNavigate()
 
     return (
         <div id='home'>
@@ -38,7 +43,9 @@ function Home() {
                     </motion.text>
                 </svg></span>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta ullam, repudiandae adipisci, pariatur obcaecati ex reiciendis expedita illo doloribus earum a dolore sit nostrum excepturi minima dolorum quod asperiores? Voluptatibus voluptatem reiciendis qui vitae possimus?</p>
-                <button>Getting started</button>
+                {/* <Link to='/dashboard'><button>Getting started</button></Link> */}
+                <button onClick={()=> navigate('/dashboard')}>Getting started</button>
+
             </div>
         </div>
     )
