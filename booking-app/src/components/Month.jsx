@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Month.css'
 
-function Month({currentDate}) {
+function Month({ currentDate, appointments }) {
 
     const getDaysInMonth = (year, month) => {
         const date = new Date(year, month, 1);
@@ -31,19 +31,57 @@ function Month({currentDate}) {
     const currentYear = currentDate.getFullYear();
     const days = getDaysInMonth(currentYear, currentMonth);
 
+    // For getting appointment dates
+    const appointmentDays = appointments
+        .map(a => {
+            const date = new Date(a.selectedDate); // ✅ correct key
+            return isNaN(date) ? null : date.toISOString().slice(0, 10);
+        })
+        .filter(Boolean);
+
+    // to get the specific appointment
+    function getAppointmentsByDate(storedAppointments, targetDate) {
+        return storedAppointments.filter(appointment => {
+            const dateOnly = new Date(appointment.selectedDate).toISOString().slice(0, 10);
+            return dateOnly === targetDate;
+        });
+    }
+
     return (
         <div id='month' className='content'>
 
             <div id="calendar-grid">
-                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-                    <div className="calendar-header" key={d}>{d}</div>
-                ))}
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => {
+                    return (<div className="calendar-header" key={d}>{d}</div>)
+                })}
 
-                {days.map((day, idx) => (
-                    <div className="calendar-cell" key={idx}>
-                        {day ? day : ""}
-                    </div>
-                ))}
+                {days.map((day, idx) => {
+                    const fullDate = new Date(currentYear, currentMonth, day).toISOString().split("T")[0];
+
+                    const appointmentData = getAppointmentsByDate(appointments, fullDate); // Always get appointments
+                    const hasAppointment = appointmentData.length > 0;
+
+                    return (
+                        <div className={`calendar-cell ${hasAppointment ? "has-appointment" : ""}`} key={idx}>
+                            {day}
+                            
+                            {hasAppointment && (
+                                <div className="appointment-message">
+                                    <div className="appointment-dot"></div>
+                                    {/* Loop through all appointments on that day */}
+                                    {appointmentData.map((appointment, i) => (
+                                        <div className="appointment-info" key={i}>
+                                            <span>{appointment.appointmentType}</span>
+                                            <span>{appointment.appointmentTitle}</span>
+                                            <span>{appointment.selectedTimeSlot}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    );
+                })}
+
             </div>
 
         </div>

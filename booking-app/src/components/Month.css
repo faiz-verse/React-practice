@@ -1,10 +1,10 @@
-.content{
+.content {
     width: 90vw;
     height: fit-content;
     min-height: 300px;
 }
 
-#calendar-grid{
+#calendar-grid {
     color: rgb(100, 100, 100);
     font-size: 16px;
     font-weight: 600;
@@ -16,7 +16,7 @@
     background: lightgray;
 }
 
-.calendar-header{
+.calendar-header {
     height: 50px;
     display: flex;
     align-items: center;
@@ -24,29 +24,35 @@
     background: white;
 }
 
-.calendar-header:nth-child(1){
+.calendar-header:nth-child(1) {
     background: rgb(255 175 204);
 }
-.calendar-header:nth-child(2){
+
+.calendar-header:nth-child(2) {
     background: rgb(255 214 255);
 }
-.calendar-header:nth-child(3){
+
+.calendar-header:nth-child(3) {
     background: rgb(231 198 255);
 }
-.calendar-header:nth-child(4){
+
+.calendar-header:nth-child(4) {
     background: rgb(200 182 255);
 }
-.calendar-header:nth-child(5){
+
+.calendar-header:nth-child(5) {
     background: rgb(184 192 255);
 }
-.calendar-header:nth-child(6){
+
+.calendar-header:nth-child(6) {
     background: rgb(187 208 255);
 }
-.calendar-header:nth-child(7){
+
+.calendar-header:nth-child(7) {
     background: rgb(244 202 224);
 }
 
-.calendar-cell{
+.calendar-cell {
     font-size: 20px;
     height: 70px;
     padding: 10px;
@@ -54,4 +60,48 @@
     align-items: start;
     justify-content: start;
     background: white;
+}
+
+.has-appointment {
+    position: relative;
+}
+
+.appointment-dot {
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    background: red;
+    border-radius: 50%;
+    top: -3px;
+    right: -3px;
+    z-index: 3;
+}
+
+.appointment-message {
+    height: 60%;
+    width: 65%;
+    padding: 5px;
+    border-radius: 5px;
+    background: papayawhip;
+    font-size: 12px;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}
+
+.appointment-info {
+    display: flex;
+    flex-direction: column;
+    /* makes children line up horizontally */
+    white-space: nowrap;
+    /* prevents internal wrapping */
+    overflow: hidden;
+    /* hides any overflow */
+    text-overflow: ellipsis;
+    /* optional: adds "..." if text is cut */
+}
+
+.appointment-info span {
+    max-width: 95%;
+    mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.2));
 }

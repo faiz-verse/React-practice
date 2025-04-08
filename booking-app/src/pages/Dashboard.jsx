@@ -71,7 +71,7 @@ function Dashboard() {
 
             {/* CALENDAR SECTIONS */}
             <div id="calendar-content">
-                {activeView === "month" && <Month currentDate={currentDate}/>}
+                {activeView === "month" && <Month currentDate={currentDate} appointments={appointments}/>}
                 {activeView === "week" && <Week/>}
                 {activeView === "day" && <Days/>}
                 {activeView === "appointments" && <Appointments/>}
