@@ -105,3 +105,32 @@
     max-width: 95%;
     mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.2));
 }
+
+.appointment-message-detail {
+    height: 60%;
+    width: 65%;
+    padding: 5px;
+    border-radius: 5px;
+    background: papayawhip;
+    font-size: 12px;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}
+
+.appointment-info-detail {
+    display: flex;
+    flex-direction: column;
+    /* makes children line up horizontally */
+    white-space: nowrap;
+    /* prevents internal wrapping */
+    overflow: hidden;
+    /* hides any overflow */
+    text-overflow: ellipsis;
+    /* optional: adds "..." if text is cut */
+}
+
+.appointment-info-detail span {
+    max-width: 95%;
+    mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.2));
+}

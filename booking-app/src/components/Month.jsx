@@ -64,7 +64,7 @@ function Month({ currentDate, appointments }) {
                     return (
                         <div className={`calendar-cell ${hasAppointment ? "has-appointment" : ""}`} key={idx}>
                             {day}
-                            
+
                             {hasAppointment && (
                                 <div className="appointment-message">
                                     <div className="appointment-dot"></div>
@@ -78,6 +78,7 @@ function Month({ currentDate, appointments }) {
                                     ))}
                                 </div>
                             )}
+
                         </div>
                     );
                 })}
