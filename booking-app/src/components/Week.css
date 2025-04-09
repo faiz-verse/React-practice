@@ -1,37 +1,98 @@
-/* Week.css */
+#week {
+    position: relative;
+}
 
-/* Example class for a container */
-.week-container {
+#time-slot-label {
+    height: 50px;
+    width: 135px;
     display: flex;
-    flex-direction: column;
-    padding: 16px;
-    background-color: #f9f9f9;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+    color: gray;
 }
 
-/* Example class for a header */
-.week-header {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #333;
+#week-time-slots {
+    height: auto;
+    width: 135px;
+    display: grid;
+    grid-template-columns: 1, 135px;
+    gap: 15px;
+
+    position: absolute;
+    top: 60px;
+    left: 0px;
 }
 
-/* Example class for a day item */
+.time-slot {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+#week-days-header {
+    height: 40px;
+    width: fit-content;
+    display: grid;
+    grid-template-rows: 1, 1fr;
+    grid-template-columns: repeat(7, 135px);
+    gap: 15px;
+
+    position: absolute;
+    top: 0;
+    left: 160px;
+}
+
 .week-day {
-    padding: 8px;
-    margin: 4px 0;
-    border: 1px solid #ddd;
+    height: 100%;
+    width: 135px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+#week-appointments-wrapper {
+
+    font-size: 12px;
+
+    height: fit-content;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(7, 135px);
+    gap: 15px;
+
+    position: absolute;
+    top: 60px;
+    left: 160px;
+}
+
+.week-appointment {
+    height: 40px;
+    width: 135px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.week-appointment.has-appointment {
+    background-color: #ecfdf5;
+    border-left: 4px solid #10b981;
+    overflow-y: auto;
+}
+
+.appointment-item {
+    background-color: #d1fae5;
+    margin-bottom: 2px;
+    padding: 2px 4px;
     border-radius: 4px;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
-}
-
-.week-day:hover {
-    background-color: #f0f0f0;
-}
-
-/* Example ID for a specific element */
-#week-highlight {
-    color: #007bff;
-    font-weight: bold;
+    font-size: 0.8rem;
 }

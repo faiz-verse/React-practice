@@ -88,6 +88,8 @@
     right: 8px;
     bottom: 8px;
     cursor: zoom-in;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .appointment-info {
@@ -148,6 +150,7 @@
     height: 85%;
     width: 100%;
     font-size: 10px;
+    z-index: 10;
 }
 
 .appointment-dot{
