@@ -54,7 +54,7 @@ function Month({ currentDate, appointments }) {
                 {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => {
                     return (<div className="calendar-header" key={d}>{d}</div>)
                 })}
-                
+
                 {days.map((day, idx) => {
                     const fullDate = new Date(currentYear, currentMonth, day).toISOString().split("T")[0];
 
@@ -65,12 +65,29 @@ function Month({ currentDate, appointments }) {
                         <div className={`calendar-cell ${hasAppointment ? "has-appointment" : ""}`} key={idx}>
                             {day}
 
-                            {hasAppointment && (
+                            {(hasAppointment && appointmentData.length == 1) && (
                                 <div className="appointment-message">
                                     <div className="appointment-dot"></div>
                                     {/* Loop through all appointments on that day */}
                                     {appointmentData.map((appointment, i) => (
                                         <div className="appointment-info" key={i}>
+                                            <span>{appointment.appointmentType}</span>
+                                            <span>{appointment.appointmentTitle}</span>
+                                            <span>{appointment.selectedTimeSlot}</span>
+                                            <span>Duration: {appointment.duration}</span>
+                                            <span>Time-zone: {appointment.selectedTimezone}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            {(hasAppointment && appointmentData.length > 1) && (
+                                <div className="appointment-message multiple">
+                                    <div className="appointment-dot"></div>
+                                    {/* Loop through all appointments on that day */}
+                                    {appointmentData.map((appointment, i) => (
+                                        <div className="appointment-info multiple" key={i}
+                                            style={{right: `-${5*i}px`, bottom: `${5*i}px`, zIndex: `${appointmentData.length - i}`}}>
                                             <span>{appointment.appointmentType}</span>
                                             <span>{appointment.appointmentTitle}</span>
                                             <span>{appointment.selectedTimeSlot}</span>

@@ -111,7 +111,7 @@
     mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.2));
 }
 
-.appointment-message-detail {
+.appointment-message {
     height: 60%;
     width: 65%;
     padding: 5px;
@@ -121,9 +121,10 @@
     position: absolute;
     right: 8px;
     bottom: 8px;
+    z-index: 1;
 }
 
-.appointment-info-detail {
+.appointment-info {
     display: flex;
     flex-direction: column;
     /* makes children line up horizontally */
@@ -135,7 +136,7 @@
     /* optional: adds "..." if text is cut */
 }
 
-.appointment-info-detail span {
+.appointment-info span {
     max-width: 95%;
     mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.2));
 }
@@ -160,4 +161,25 @@
 .appointment-message:hover .appointment-dot{
     transform: translate(10px, -10px);
     opacity: 0;
+}
+
+.appointment-message.multiple{
+    height: 50%;
+    width: 55%;
+    position: relative;
+    top: 33%;
+    left: 20%;
+}
+
+.appointment-info.multiple{
+    padding: 5px;
+    border-radius: 5px;
+    background: papayawhip;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: zoom-in;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
