@@ -18,44 +18,79 @@
     width: 135px;
     display: grid;
     grid-template-columns: 1, 135px;
-    gap: 15px;
+    gap: 10px;
 
     position: absolute;
-    top: 60px;
+    top: 70px;
     left: 0px;
 }
 
-.time-slot {
+.week-time-slot {
     height: 50px;
     width: 100%;
-    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); */
 }
 
 #week-days-header {
-    height: 40px;
+    height: 60px;
     width: fit-content;
     display: grid;
     grid-template-rows: 1, 1fr;
     grid-template-columns: repeat(7, 135px);
-    gap: 15px;
+    gap: 10px;
 
     position: absolute;
     top: 0;
-    left: 160px;
+    left: 180px;
 }
+
 
 .week-day {
     height: 100%;
     width: 135px;
-    border-radius: 5px;
+    font-weight: 600;
+    color: rgb(65, 65, 65);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.week-day>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.week-day:nth-child(1) {
+    background: rgb(255 175 204);
+}
+
+.week-day:nth-child(2) {
+    background: rgb(255 214 255);
+}
+
+.week-day:nth-child(3) {
+    background: rgb(231 198 255);
+}
+
+.week-day:nth-child(4) {
+    background: rgb(200 182 255);
+}
+
+.week-day:nth-child(5) {
+    background: rgb(184 192 255);
+}
+
+.week-day:nth-child(6) {
+    background: rgb(187 208 255);
+}
+
+.week-day:nth-child(7) {
+    background: rgb(244 202 224);
 }
 
 #week-appointments-wrapper {
@@ -66,33 +101,32 @@
     width: fit-content;
     display: grid;
     grid-template-columns: repeat(7, 135px);
-    gap: 15px;
+    gap: 10px;
 
     position: absolute;
-    top: 60px;
-    left: 160px;
+    top: 70px;
+    left: 180px;
 }
 
 .week-appointment {
-    height: 40px;
+    height: 50px;
     width: 135px;
-    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .week-appointment.has-appointment {
     background-color: #ecfdf5;
     border-left: 4px solid #10b981;
-    overflow-y: auto;
+    position: relative;
 }
 
 .appointment-item {
     background-color: #d1fae5;
-    margin-bottom: 2px;
     padding: 2px 4px;
     border-radius: 4px;
     font-size: 0.8rem;
+    position: absolute;
 }

@@ -45,56 +45,76 @@ function Week({ currentDate, appointments }) {
 
     return (
         <div id='week' className='content'>
-            <div id='time-slot-label'> Time Slots </div>
+            <div id='time-slot-label'> Timings </div>
             <div id='week-time-slots'>
                 {timeSlots.map((slot, index) => (
-                    <div className='time-slot' key={index}>{slot}</div>
+                    <div className='week-time-slot' key={index}>{slot}</div>
                 ))}
             </div>
             <div id='week-days-header'>
-                {week.map((currentDay, index) => (
-                    <div className='week-day' key={currentDay}>{currentDay}</div>
-                ))}
+                {week.map((currentDay, index) => {
+                    const date = new Date(currentDay)
+                    const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }); // "Sunday"
+                    const dayOfMonth = String(date.getDate()).padStart(2, '0');              // "06"
+                    return(
+                        <div className='week-day' key={currentDay}>
+                                <div>
+                                    <span>{dayOfWeek}</span>
+                                    <span>{dayOfMonth}</span>
+                                </div>
+                        </div>
+                    );   
+                })}
             </div>
 
             <div id='week-appointments-wrapper'>
-                {timeSlots.map((slot) =>
-                    week.map((day) => {
-                        const matchingAppointments = appointments.filter((appt) => {
-                            const apptDate = new Date(appt.selectedDate);
+  {timeSlots.map((slot, slotIndex) =>
+    week.map((day) => {
+      const matchingAppointments = appointments.filter((appt) => {
+        const apptDate = new Date(appt.selectedDate);
 
-                            const formatted = apptDate.toLocaleString('en-US', {
-                                timeZone: appt.selectedTimezone.substring(appt.selectedTimezone.lastIndexOf(' ') + 1, appt.selectedTimezone.length) || 'Asia/Kolkata',
-                                year: 'numeric',
-                                month: '2-digit',
-                                day: '2-digit',
-                                hour: 'numeric',
-                                minute: '2-digit',
-                                hour12: true,
-                            });
+        // Fix timezone for correct day
+        const formatted = apptDate.toLocaleString('en-US', {
+          timeZone: appt.selectedTimezone.split(' - ')[1] || 'Asia/Kolkata',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        });
+        const [mm, dd, yyyy] = formatted.split('/');
+        const formattedDate = `${yyyy}-${mm}-${dd}`;
+        if (formattedDate !== day) return false;
 
-                            const [datePart, timePart] = formatted.split(', ');
-                            const [mm, dd, yyyy] = datePart.split('/');
-                            const formattedDate = `${yyyy}-${mm}-${dd}`;
+        // Compare times
+        const startTimeString = appt.selectedTimeSlot.split(' - ')[0].trim();
+        const dummyDate = new Date().toDateString();
 
-                            return formattedDate === day && timePart === slot;
-                        });
+        const slotTime = new Date(`${dummyDate} ${slot}`);
+        const nextSlot = timeSlots[slotIndex + 1];
+        const nextSlotTime = nextSlot
+          ? new Date(`${dummyDate} ${nextSlot}`)
+          : new Date(`${dummyDate} 11:59 PM`);
 
-                        return (
-                            <div
-                                key={`${slot}-${day}`}
-                                className={`week-appointment ${matchingAppointments.length > 0 ? 'has-appointment' : ''}`}
-                            >
-                                {matchingAppointments.map((appt, idx) => (
-                                    <div key={idx} className="appointment-item">
-                                        {appt.appointmentTitle}
-                                    </div>
-                                ))}
-                            </div>
-                        );
-                    })
-                )}
+        const apptStartTime = new Date(`${dummyDate} ${startTimeString}`);
+
+        return apptStartTime >= slotTime && apptStartTime < nextSlotTime;
+      });
+
+      return (
+        <div
+          key={`${slot}-${day}`}
+          className={`week-appointment ${matchingAppointments.length > 0 ? 'has-appointment' : ''}`}
+        >
+          {matchingAppointments.map((appt, idx) => (
+            <div key={idx} className="appointment-item">
+              {appt.appointmentTitle}
             </div>
+          ))}
+        </div>
+      );
+    })
+  )}
+</div>
+
 
         </div>
     )
