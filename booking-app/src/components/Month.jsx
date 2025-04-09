@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './Month.css'
+
+import AppointmentGroup from './AppointmentGroup'
 
 function Month({ currentDate, appointments }) {
 
@@ -67,7 +69,6 @@ function Month({ currentDate, appointments }) {
 
                             {(hasAppointment && appointmentData.length == 1) && (
                                 <div className="appointment-message">
-                                    <div className="appointment-dot"></div>
                                     {/* Loop through all appointments on that day */}
                                     {appointmentData.map((appointment, i) => (
                                         <div className="appointment-info" key={i}>
@@ -82,22 +83,8 @@ function Month({ currentDate, appointments }) {
                             )}
 
                             {(hasAppointment && appointmentData.length > 1) && (
-                                <div className="appointment-message multiple">
-                                    <div className="appointment-dot"></div>
-                                    {/* Loop through all appointments on that day */}
-                                    {appointmentData.map((appointment, i) => (
-                                        <div className="appointment-info multiple" key={i}
-                                            style={{right: `-${5*i}px`, bottom: `${5*i}px`, zIndex: `${appointmentData.length - i}`}}>
-                                            <span>{appointment.appointmentType}</span>
-                                            <span>{appointment.appointmentTitle}</span>
-                                            <span>{appointment.selectedTimeSlot}</span>
-                                            <span>Duration: {appointment.duration}</span>
-                                            <span>Time-zone: {appointment.selectedTimezone}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                                <AppointmentGroup appointments={appointmentData} />
                             )}
-
                         </div>
                     );
                 })}

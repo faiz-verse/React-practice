@@ -1,0 +1,32 @@
+.appointment-message.multiple{
+    height: 50%;
+    width: 55%;
+    position: relative;
+    top: 35%;
+    left: 20%;
+}
+
+.appointment-info.multiple{
+    padding: 5px;
+    border-radius: 5px;
+    background: papayawhip;
+    font-size: 11px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: zoom-in;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.appointment-dot.multiple {
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    background: red;
+    border-radius: 50%;
+    top: -14px;
+    right: -7px;
+    z-index: 3;
+}

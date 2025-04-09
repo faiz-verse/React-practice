@@ -60,21 +60,11 @@
     align-items: start;
     justify-content: start;
     background: white;
+    overflow: visible;
 }
 
 .has-appointment {
     position: relative;
-}
-
-.appointment-dot {
-    height: 12px;
-    width: 12px;
-    position: absolute;
-    background: red;
-    border-radius: 50%;
-    top: -3px;
-    right: -3px;
-    z-index: 3;
 }
 
 .appointment-message {
@@ -152,34 +142,4 @@
     width: 100%;
     font-size: 10px;
     z-index: 10;
-}
-
-.appointment-dot{
-    transition: all 0.3s ease-in-out;
-}
-
-.appointment-message:hover .appointment-dot{
-    transform: translate(10px, -10px);
-    opacity: 0;
-}
-
-.appointment-message.multiple{
-    height: 50%;
-    width: 55%;
-    position: relative;
-    top: 33%;
-    left: 20%;
-}
-
-.appointment-info.multiple{
-    padding: 5px;
-    border-radius: 5px;
-    background: papayawhip;
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    cursor: zoom-in;
-
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
