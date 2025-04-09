@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Week() {
+function Week({ currentDate, appointments }) {
 
     function getCurrentWeekDates(date = new Date()) {
         const startOfWeek = new Date(date);
@@ -17,6 +17,8 @@ function Week() {
         return week;
     }
 
+    const week = getCurrentWeekDates()
+
     console.log(getCurrentWeekDates());
 
     const timeSlots = []
@@ -29,9 +31,16 @@ function Week() {
 
     return (
         <div id='week' className='content'>
-            {timeSlots.map((slot, index) => (
-                <div key={index}>{slot}</div>
-            ))}
+            <div id='week-time-slots'>
+                {timeSlots.map((slot, index) => (
+                    <div className='time-slot' key={index}>{slot}</div>
+                ))}
+            </div>
+            <div id='week-days-header'>
+                {week.map((currentDay, index) => (
+                    <div className='week-day' key={currentDay}>{currentDay}</div>
+                ))}
+            </div>
         </div>
     )
 }

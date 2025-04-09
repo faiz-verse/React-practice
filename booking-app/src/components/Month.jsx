@@ -31,13 +31,13 @@ function Month({ currentDate, appointments }) {
     const currentYear = currentDate.getFullYear();
     const days = getDaysInMonth(currentYear, currentMonth);
 
-    // For getting appointment dates
-    const appointmentDays = appointments
-        .map(a => {
-            const date = new Date(a.selectedDate); // ✅ correct key
-            return isNaN(date) ? null : date.toISOString().slice(0, 10);
-        })
-        .filter(Boolean);
+    // // For getting appointment dates
+    // const appointmentDays = appointments
+    //     .map(a => {
+    //         const date = new Date(a.selectedDate); // ✅ correct key
+    //         return isNaN(date) ? null : date.toISOString().slice(0, 10);
+    //     })
+    //     .filter(Boolean);
 
     // to get the specific appointment
     function getAppointmentsByDate(storedAppointments, targetDate) {
@@ -54,7 +54,7 @@ function Month({ currentDate, appointments }) {
                 {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => {
                     return (<div className="calendar-header" key={d}>{d}</div>)
                 })}
-
+                
                 {days.map((day, idx) => {
                     const fullDate = new Date(currentYear, currentMonth, day).toISOString().split("T")[0];
 
@@ -74,6 +74,8 @@ function Month({ currentDate, appointments }) {
                                             <span>{appointment.appointmentType}</span>
                                             <span>{appointment.appointmentTitle}</span>
                                             <span>{appointment.selectedTimeSlot}</span>
+                                            <span>Duration: {appointment.duration}</span>
+                                            <span>Time-zone: {appointment.selectedTimezone}</span>
                                         </div>
                                     ))}
                                 </div>
