@@ -3,8 +3,8 @@
 }
 
 #time-slot-label {
-    height: 50px;
-    width: 135px;
+    height: 60px;
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,18 +15,18 @@
 
 #week-time-slots {
     height: auto;
-    width: 135px;
+    width: 100px;
     display: grid;
-    grid-template-columns: 1, 135px;
-    gap: 10px;
+    grid-template-columns: 1, 100px;
+    gap: 15px;
 
     position: absolute;
-    top: 70px;
+    top: 85px;
     left: 0px;
 }
 
 .week-time-slot {
-    height: 50px;
+    height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -35,22 +35,22 @@
 }
 
 #week-days-header {
-    height: 60px;
+    height: 70px;
     width: fit-content;
     display: grid;
     grid-template-rows: 1, 1fr;
-    grid-template-columns: repeat(7, 135px);
-    gap: 10px;
+    grid-template-columns: repeat(7, 140px);
+    gap: 15px;
 
     position: absolute;
     top: 0;
-    left: 180px;
+    left: 140px;
 }
 
 
 .week-day {
     height: 100%;
-    width: 135px;
+    width: 140px;
     font-weight: 600;
     color: rgb(65, 65, 65);
     display: flex;
@@ -100,27 +100,32 @@
     height: fit-content;
     width: fit-content;
     display: grid;
-    grid-template-columns: repeat(7, 135px);
-    gap: 10px;
+    grid-template-columns: repeat(7, 140px);
+    gap: 15px;
 
     position: absolute;
-    top: 70px;
-    left: 180px;
+    top: 85px;
+    left: 140px;
 }
 
 .week-appointment {
-    height: 50px;
-    width: 135px;
+    height: 60px;
+    width: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
+    
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 .week-appointment.has-appointment {
+    position: relative;
+
     background-color: #ecfdf5;
     border-left: 4px solid #10b981;
-    position: relative;
+    
+    mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.3));
 }
 
 .appointment-item {
@@ -129,11 +134,36 @@
     border-radius: 4px;
     font-size: 0.8rem;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    left: 5px;
 
     display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-content: center;
+    /* makes children line up horizontally */
+    white-space: nowrap;
+    /* prevents internal wrapping */
+    overflow: hidden;
+    /* hides any overflow */
+    text-overflow: ellipsis;
+    /* optional: adds "..." if text is cut */
+}
+
+.appointment-item.multiple {
+
+    position: absolute;
+    left: 5px;
+
+    background-color: #d1fae5;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    
+    display: flex;
+    flex-direction: column;
+    /* makes children line up horizontally */
+    white-space: nowrap;
+    /* prevents internal wrapping */
+    overflow: hidden;
+    /* hides any overflow */
+    text-overflow: ellipsis;
+    /* optional: adds "..." if text is cut */
 }

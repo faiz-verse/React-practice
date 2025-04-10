@@ -30,18 +30,7 @@ function Week({ currentDate, appointments }) {
         timeSlots.push(`${formattedHour}:00 ${ampm}`);
     }
 
-    // to get the specific appointment
-    function getAppointmentsByDate(storedAppointments, targetDate) {
-        return storedAppointments.filter(appointment => {
-            const dateOnly = new Date(appointment.selectedDate).toISOString().slice(0, 10);
-            return dateOnly === targetDate;
-        });
-    }
-
     console.log(timeSlots)
-
-    const currentMonth = currentDate.getMonth(); // 0-based (0 = Jan)
-    const currentYear = currentDate.getFullYear();
 
     return (
         <div id='week' className='content'>
@@ -52,7 +41,7 @@ function Week({ currentDate, appointments }) {
                 ))}
             </div>
             <div id='week-days-header'>
-                {week.map((currentDay, index) => {
+                {week.map((currentDay) => {
                     const date = new Date(currentDay)
                     const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }); // "Sunday"
                     const dayOfMonth = String(date.getDate()).padStart(2, '0');              // "06"
@@ -104,15 +93,34 @@ function Week({ currentDate, appointments }) {
                                 key={`${slot}-${day}`}
                                 className={`week-appointment ${matchingAppointments.length > 0 ? 'has-appointment' : ''}`}
                             >
-                                {matchingAppointments.map((appt, idx) => (
+                                {matchingAppointments.length == 1 && matchingAppointments.map((appt, idx) => (
                                     <div key={idx} className="appointment-item"
-                                        
+
                                     >
                                         <span>Title: {appt.appointmentTitle}</span>
                                         <span>Timing: {appt.selectedTimeSlot}</span>
                                     </div>
                                 ))}
+
+                                {matchingAppointments.length > 1 && appointments.map((appt, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="appointment-item multiple"
+                                        style={{
+                                            top: isHovered ? `-${idx * 18}px` : `0px`,
+                                            left: isHovered ? `${idx * 18}px` : `${idx * 5}px`,
+                                            zIndex: appointments.length - idx,
+                                            position: 'absolute',
+                                            transition: 'all 0.2s ease-in-out',
+                                        }}
+                                    >
+                                        <span>Title: {appt.appointmentTitle}</span>
+                                        <span>Timing: {appt.selectedTimeSlot}</span>
+                                    </div>
+                                ))
+                                }
                             </div>
+
                         );
                     })
                 )}
