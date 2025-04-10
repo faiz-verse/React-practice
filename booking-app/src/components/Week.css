@@ -47,6 +47,36 @@
     left: 140px;
 }
 
+#week-days-header #button-left, #week-days-header #button-right{
+    all: unset;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: transparent;
+
+    position: absolute;
+    transform: all 0.15s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#week-days-header #button-left{
+    left: -40px;
+    align-self: center;
+    stroke-width: 5px;
+}
+#week-days-header #button-right{
+    right: -40px;
+    align-self: center;
+    stroke-width: 5px;
+}
+
+#week-days-header #button-left:active,
+#week-days-header #button-right:active {
+    scale: 0.9;
+    background: lightgray;
+}
 
 .week-day {
     height: 100%;
@@ -65,31 +95,38 @@
     justify-content: center;
 }
 
-.week-day:nth-child(1) {
-    background: rgb(255 175 204);
+
+
+.week-day #button-right{
+    border-radius: 50%;
+    background: transparent;
 }
 
 .week-day:nth-child(2) {
-    background: rgb(255 214 255);
+    background: rgb(255 175 204);
 }
 
 .week-day:nth-child(3) {
-    background: rgb(231 198 255);
+    background: rgb(255 214 255);
 }
 
 .week-day:nth-child(4) {
-    background: rgb(200 182 255);
+    background: rgb(231 198 255);
 }
 
 .week-day:nth-child(5) {
-    background: rgb(184 192 255);
+    background: rgb(200 182 255);
 }
 
 .week-day:nth-child(6) {
-    background: rgb(187 208 255);
+    background: rgb(184 192 255);
 }
 
 .week-day:nth-child(7) {
+    background: rgb(187 208 255);
+}
+
+.week-day:nth-child(8) {
     background: rgb(244 202 224);
 }
 
@@ -123,8 +160,15 @@
     position: relative;
 
     background-color: #ecfdf5;
-    border-left: 4px solid #10b981;
+    border-left: 4px solid palegreen;
     
+    mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.3));
+}
+
+.week-appointment.multiple{
+    position: relative;
+    background-color: #ecfdf5;
+    border-left: 4px solid green;
     mask-image: linear-gradient(to right, black 80%, rgba(0, 0, 0, 0.3));
 }
 
@@ -167,3 +211,4 @@
     text-overflow: ellipsis;
     /* optional: adds "..." if text is cut */
 }
+

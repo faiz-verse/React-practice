@@ -84,10 +84,14 @@ function AppointmentModal({ toggleAppointmentModal, setToggleAppointmentModal, m
     const roundUpToNearest = (minutes, interval) => Math.ceil(minutes / interval) * interval;
 
     useEffect(() => {
+        if (!selectedDate) return;
+
         const now = new Date();
-        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+        const isToday = selectedDate.toDateString() === now.toDateString();
+
         const interval = getDurationInMinutes(duration);
-        const startMinutes = roundUpToNearest(currentMinutes, interval);
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+        const startMinutes = isToday ? roundUpToNearest(currentMinutes, interval) : 0;
         const endOfDay = 24 * 60;
 
         const slotList = [];
@@ -97,11 +101,24 @@ function AppointmentModal({ toggleAppointmentModal, setToggleAppointmentModal, m
         }
 
         setTimeSlots(slotList);
-    }, [duration]);
+    }, [duration, selectedDate]);
 
     const handleAddAppointment = () => {
         if (!appointmentType || !appointmentTitle || !selectedDate || !selectedTimeSlot) {
             alert("Please fill all fields and select a date/time slot.");
+            return;
+        }
+
+        const hasConflict = appointments.some(appt => {
+            const existingDate = new Date(appt.selectedDate);
+            return (
+                existingDate.toDateString() === selectedDate.toDateString() &&
+                appt.selectedTimeSlot === selectedTimeSlot
+            );
+        });
+
+        if (hasConflict) {
+            alert("You already have an appointment at this date and time slot.");
             return;
         }
 
@@ -119,7 +136,7 @@ function AppointmentModal({ toggleAppointmentModal, setToggleAppointmentModal, m
         setAppointments(updatedAppointments);
         localStorage.setItem("appointments", JSON.stringify(updatedAppointments));
 
-        console.log("Appointment Added ✅", updatedAppointments); // ✅ Corrected log
+        console.log("Appointment Added ✅", updatedAppointments);
 
         // Reset form and close modal
         setAppointmentType("");
