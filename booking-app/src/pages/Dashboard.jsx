@@ -57,7 +57,7 @@ function Dashboard() {
                     <div className="option" style={{ background: (activeView === "appointments") ? "dodgerblue" : "rgb(232, 246, 255)", color: (activeView === "appointments") ? "white" : "black" }} onClick={() => setActiveView("appointments")}>Appointments</div>
                 </div>
 
-                <div id='container-date' style={{ visibility: (activeView != "month")? "hidden" : "visible" }}>
+                <div id='container-date' style={{ visibility: (activeView == "day" || activeView == "appointments")? "hidden" : "visible" }}>
                     <button id='prev' onClick={handlePrev}><BsChevronLeft size={20} color='rgb(100, 100, 100)' strokeWidth={1} /></button>
                     <span>{monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}</span>
                     <button id='next' onClick={handleNext}><BsChevronRight size={20} color='rgb(100, 100, 100)' strokeWidth={1} /></button>

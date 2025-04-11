@@ -79,6 +79,8 @@ function Days({ currentDate, appointments, setAppointments }) {
     // Extract just the start time from "12:00 PM - 12:30 PM"
     const getStartTime = (timeRange) => timeRange.split('-')[0].trim();
 
+    const roundDownToNearest = (minutes, interval) => Math.floor(minutes / interval) * interval;
+
 
     return (
         <div id='days' className='content'>
@@ -100,13 +102,25 @@ function Days({ currentDate, appointments, setAppointments }) {
                 {timeSlots.map((slot, i) => {
                     const matchingAppointments = appointments.filter(appt => {
                         const apptDate = new Date(appt.selectedDate);
-                        const isSameDate = apptDate.toDateString() === localDate.toDateString();
-
-                        const startTime = getStartTime(appt.selectedTimeSlot);
-                        const isSameTime = startTime === slot;
-
-                        return isSameDate && isSameTime;
+                        if (apptDate.toDateString() !== localDate.toDateString()) return false;
+                    
+                        // Convert appointment start time to total minutes
+                        const startTimeStr = getStartTime(appt.selectedTimeSlot);
+                        const [time, modifier] = startTimeStr.split(' ');
+                        let [hour, minute] = time.split(':').map(Number);
+                        if (modifier === "PM" && hour !== 12) hour += 12;
+                        if (modifier === "AM" && hour === 12) hour = 0;
+                    
+                        const totalMinutes = hour * 60 + minute;
+                        const interval = getDurationInMinutes(duration);
+                        const slotMinutes = roundDownToNearest(totalMinutes, interval);
+                    
+                        // Compare with current slot
+                        const formattedSlot = formatTime(slotMinutes);
+                    
+                        return formattedSlot === slot;
                     });
+                    
 
                     return (
                         <div key={i} className={`day-time-slot`}>
