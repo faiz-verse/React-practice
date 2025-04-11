@@ -2,12 +2,21 @@ import React from 'react'
 
 import { format } from 'date-fns';
 
+import { BsTrash } from 'react-icons/bs';
+
 import './Appointments.css'
 
 function Appointments({ appointments, setAppointments }) {
+
+    const handleDelete = () => {
+        setAppointments([])
+        localStorage.removeItem("appointments");
+    }
+
     return (
         <div id='appointments' className='content'>
-            {appointments.map((appt, index) => {
+            <button onClick={() => handleDelete()} id='clear-appointments'><BsTrash size={20} color='white'></BsTrash> Clear Appointments</button>
+            {appointments.length > 0 && appointments.map((appt, index) => {
                 return (
                     <div className='appt' key={index}>
                         <div className='appt-wrapper-1'>

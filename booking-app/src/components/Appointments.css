@@ -6,6 +6,26 @@
     gap: 40px;
 }
 
+#clear-appointments{
+    all: unset;
+    width: 180px;
+    padding: 7px;
+    border-radius: 5px;
+    color: white;
+    background: tomato;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    position: fixed;
+    top: 30px;
+    left: calc(50% - 75px);
+    cursor: pointer;
+
+    z-index: 100;
+}
+
 .appt-date{
     width: fit-content;
     font-size: 18px;
@@ -13,13 +33,14 @@
 }
 
 .appt-wrapper-1{
-    min-width: 250px;
+    min-width: 20vw;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .appt-wrapper-2{
+    width: 70vw;
     padding: 10px;
     border-radius: 7px;
     border: 1px solid lightgray;
