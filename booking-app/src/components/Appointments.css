@@ -1,0 +1,32 @@
+.appt{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    padding-left: 20px;
+}
+
+.appt-number{
+    width: fit-content;
+    padding: 5px 30px;
+    border-radius: 50px;
+    background: lightgray;
+}
+
+.appt-content-wrapper{
+    display: flex;
+    gap: 15px;
+}
+
+.appt-content-wrapper span{
+    min-width: 250px;
+    width: auto;
+    padding: 5px;
+}
+
+.appt-content-wrapper span:nth-child(1){
+    margin-top: 5px;
+}
+
+.appt-content-wrapper span b{
+    font-size: 14px;
+    color: gray;
+}

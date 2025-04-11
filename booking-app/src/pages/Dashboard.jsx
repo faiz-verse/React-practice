@@ -74,7 +74,7 @@ function Dashboard() {
                 {activeView === "month" && <Month currentDate={currentDate} appointments={appointments} />}
                 {activeView === "week" && <Week currentDate={currentDate} setCurrentDate={setCurrentDate} appointments={appointments} />}
                 {activeView === "day" && <Days currentDate={currentDate} appointments={appointments} setAppointments={setAppointments} />}
-                {activeView === "appointments" && <Appointments />}
+                {activeView === "appointments" && <Appointments appointments={appointments} setAppointments={setAppointments}/>}
             </div>
 
             <AppointmentModal toggleAppointmentModal={toggleAppointmentModal} setToggleAppointmentModal={setToggleAppointmentModal} monthNames={monthNames} appointments={appointments} setAppointments={setAppointments} />
