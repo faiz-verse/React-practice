@@ -15,12 +15,12 @@ function Home() {
             <div id='nav'>
                 <div id='title'>
                     <img src="/vite.svg" alt="logo" />
-                    <span><span style={{color: 'dodgerblue'}}>Booking</span> App</span>
+                    <span><span style={{color: 'dodgerblue'}}>Appointment Booking</span> App</span>
                 </div>
-                <div id='login-options'>
+                {/* <div id='login-options'>
                     <span>Sign-up</span>
                     <button>Login</button>
-                </div>
+                </div> */}
             </div>
 
             <div id="home-content">

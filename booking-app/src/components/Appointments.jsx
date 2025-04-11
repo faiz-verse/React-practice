@@ -40,6 +40,11 @@ function Appointments({ appointments, setAppointments }) {
                 );
             })}
 
+            {appointments.length == 0 && (
+                    <div>No appointments yet</div>
+                )
+            }
+
         </div>
     )
 }
