@@ -34,6 +34,23 @@ function Week({ currentDate, setCurrentDate, appointments }) {
         return `${formattedHour}:00 ${ampm}`;
     });
 
+    const getRoundedHourSlot = (timeStr) => {
+        const [time, ampm] = timeStr.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+
+        if (ampm === 'PM' && hours !== 12) hours += 12;
+        if (ampm === 'AM' && hours === 12) hours = 0;
+
+        const totalMinutes = hours * 60 + minutes;
+        const roundedHourMinutes = Math.floor(totalMinutes / 60) * 60;
+
+        const roundedHour = Math.floor(roundedHourMinutes / 60) % 24;
+        const formattedHour = roundedHour % 12 === 0 ? 12 : roundedHour % 12;
+        const newAmpm = roundedHour < 12 ? 'AM' : 'PM';
+
+        return `${formattedHour}:00 ${newAmpm}`;
+    };
+
     const appointmentMap = {};
     appointments.forEach((appt) => {
         const apptDate = new Date(appt.selectedDate);
@@ -46,8 +63,10 @@ function Week({ currentDate, setCurrentDate, appointments }) {
         const [mm, dd, yyyy] = formatted.split('/');
         const formattedDate = `${yyyy}-${mm}-${dd}`;
 
-        const startTime = appt.selectedTimeSlot.split(' - ')[0].trim();
-        const key = `${startTime}-${formattedDate}`;
+        const originalStartTime = appt.selectedTimeSlot.split(' - ')[0].trim();
+        const roundedTime = getRoundedHourSlot(originalStartTime);
+        const key = `${roundedTime}-${formattedDate}`;
+
         if (!appointmentMap[key]) appointmentMap[key] = [];
         appointmentMap[key].push(appt);
     });
