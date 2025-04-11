@@ -1,0 +1,67 @@
+#date-wrapper{
+    width: 350px;
+    height: 40px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    position: fixed;
+    top: 30px;
+    left: calc(50% - 150px);
+
+    z-index: 100;
+}
+
+#date-wrapper span{
+    font-weight: 600;
+}
+
+#duration-dropdown{
+    width: fit-content;
+    height: 40px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    position: fixed;
+    top: 30px;
+    left: calc(50% + 180px);
+
+    z-index: 100;
+}
+
+#duration-label{
+    color: gray;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#date-wrapper button{
+    all: unset;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(232, 246, 255);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+#day-timeslots{
+    
+}
+
+.day-time-slot{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 15px;
+    border-bottom: 1px solid lightgray;
+}
