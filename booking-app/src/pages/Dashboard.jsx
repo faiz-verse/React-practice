@@ -52,9 +52,9 @@ function Dashboard() {
             <div id='dashboard-nav'>
                 <div id="container-options">
                     <div className="option" style={{background: (activeView === "month")? "dodgerblue": "rgb(232, 246, 255)", color: (activeView === "month")? "white": "black"}} onClick={() => setActiveView("month")}>Month</div>
-                    <div className="option" style={{pointerEvents: 'auto',background: (activeView === "week")? "dodgerblue": "rgb(232, 246, 255)", color: (activeView === "week")? "white": "black"}} onClick={() => setActiveView("week")}>Week</div>
-                    <div className="option" style={{pointerEvents: 'none',background: (activeView === "day")? "dodgerblue": "rgb(232, 246, 255)", color: (activeView === "day")? "white": "black"}} onClick={() => setActiveView("day")}>Day</div>
-                    <div className="option" style={{pointerEvents: 'none',background: (activeView === "appointments")? "dodgerblue": "rgb(232, 246, 255)", color: (activeView === "appointments")? "white": "black"}} onClick={() => setActiveView("appointments")}>Appointments</div>
+                    <div className="option" style={{background: (activeView === "week")? "dodgerblue": "rgb(232, 246, 255)", color: (activeView === "week")? "white": "black"}} onClick={() => setActiveView("week")}>Week</div>
+                    <div className="option" style={{background: (activeView === "day")? "dodgerblue": "rgb(232, 246, 255)", color: (activeView === "day")? "white": "black"}} onClick={() => setActiveView("day")}>Day</div>
+                    <div className="option" style={{background: (activeView === "appointments")? "dodgerblue": "rgb(232, 246, 255)", color: (activeView === "appointments")? "white": "black"}} onClick={() => setActiveView("appointments")}>Appointments</div>
                 </div>
 
                 <div id='container-date'>
@@ -65,7 +65,7 @@ function Dashboard() {
 
                 <div id='buttons-container'>
                     <button id='new-appointment' onClick={()=> setToggleAppointmentModal(!toggleAppointmentModal)}> <BsPlus size={28} color='rgb(100, 100, 100)'/> New Appointment</button>
-                    <button id='profile-btn' style={{pointerEvents: 'none'}}><BsPerson size={28} color='rgb(100, 100, 100)'/></button>
+                    {/* <button id='profile-btn' style={{pointerEvents: 'none'}}><BsPerson size={28} color='rgb(100, 100, 100)'/></button> */}
                 </div>
             </div>
 

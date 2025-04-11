@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BsPlus, BsPerson, BsChevronRight, BsChevronLeft } from "react-icons/bs";
+import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid';
 import './AppointmentModal.css';
 
@@ -185,8 +185,8 @@ function AppointmentModal({ toggleAppointmentModal, setToggleAppointmentModal, m
                                 const isSelected = selectedDate && cellDate.toDateString() === selectedDate.toDateString();
                                 return (
                                     <div key={i} onClick={() => !isPast && setSelectedDate(cellDate)}
-                                         className={`appointment-calendar-cell ${isPast ? 'disabled' : ''} ${isSelected ? 'selected' : ''}`}
-                                         style={{ pointerEvents: isPast ? 'none' : 'auto' }}>
+                                        className={`appointment-calendar-cell ${isPast ? 'disabled' : ''} ${isSelected ? 'selected' : ''}`}
+                                        style={{ pointerEvents: isPast ? 'none' : 'auto' }}>
                                         {day}
                                     </div>
                                 );
@@ -218,7 +218,7 @@ function AppointmentModal({ toggleAppointmentModal, setToggleAppointmentModal, m
                     <div id='time-slot-wrapper'>
                         {timeSlots.map((slot, i) => (
                             <div key={i} onClick={() => setSelectedTimeSlot(slot)}
-                                 className={`time-slot ${selectedTimeSlot === slot ? 'selected' : ''}`}>
+                                className={`time-slot ${selectedTimeSlot === slot ? 'selected' : ''}`}>
                                 {slot}
                             </div>
                         ))}
