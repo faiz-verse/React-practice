@@ -2,13 +2,27 @@
     padding: 10px;
     border-bottom: 1px solid lightgray;
     padding-left: 20px;
+    display: flex;
+    gap: 40px;
 }
 
-.appt-number{
+.appt-date{
     width: fit-content;
-    padding: 5px 30px;
-    border-radius: 50px;
-    background: lightgray;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.appt-wrapper-1{
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.appt-wrapper-2{
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid lightgray;
 }
 
 .appt-content-wrapper{
@@ -17,16 +31,12 @@
 }
 
 .appt-content-wrapper span{
-    min-width: 250px;
+    min-width: 150px;
     width: auto;
     padding: 5px;
 }
 
-.appt-content-wrapper span:nth-child(1){
-    margin-top: 5px;
-}
-
-.appt-content-wrapper span b{
+.appt-wrapper-1 span b, .appt-content-wrapper span b{
     font-size: 14px;
     color: gray;
 }
