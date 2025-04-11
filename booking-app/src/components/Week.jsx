@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
-import './week.css';
+import './Week.css';
 
 function Week({ currentDate, setCurrentDate, appointments }) {
     const [localDate, setLocalDate] = useState(currentDate);
