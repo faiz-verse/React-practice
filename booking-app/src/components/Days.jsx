@@ -76,6 +76,10 @@ function Days({ currentDate, appointments, setAppointments }) {
         setLocalDate(nextDate);
     };
 
+    // Extract just the start time from "12:00 PM - 12:30 PM"
+    const getStartTime = (timeRange) => timeRange.split('-')[0].trim();
+
+
     return (
         <div id='days' className='content'>
 
@@ -93,12 +97,34 @@ function Days({ currentDate, appointments, setAppointments }) {
             </div>
 
             <div id='day-timeslots'>
-                {timeSlots.map((slot, i) => (
-                    <div key={i} className={`day-time-slot`}>
-                        {slot}
-                    </div>
-                ))}
+                {timeSlots.map((slot, i) => {
+                    const matchingAppointments = appointments.filter(appt => {
+                        const apptDate = new Date(appt.selectedDate);
+                        const isSameDate = apptDate.toDateString() === localDate.toDateString();
+
+                        const startTime = getStartTime(appt.selectedTimeSlot);
+                        const isSameTime = startTime === slot;
+
+                        return isSameDate && isSameTime;
+                    });
+
+                    return (
+                        <div key={i} className={`day-time-slot`}>
+                            <div className='time-slot-label'>{slot}</div>
+                            <div className='day-appointment-wrapper'>
+                                {matchingAppointments.map((appt, idx) => (
+                                    <div key={idx} className="day-appointment">
+                                        <span><b>Type: </b>{appt.appointmentType}</span>
+                                        <span><b>Title: </b>{appt.appointmentTitle}</span>
+                                        <span><b>Time: </b>{appt.selectedTimeSlot} , {appt.selectedTimezone}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
+
 
         </div>
     )
