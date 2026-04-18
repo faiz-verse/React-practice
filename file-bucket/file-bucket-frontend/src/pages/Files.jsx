@@ -11,6 +11,7 @@ import QRCode from "react-qr-code";
 
 import PropertiesModal from "../components/PropertiesModal.jsx";
 import '../components/PropertiesModal.css';
+import './Files.css';
 
 function Files() {
 
@@ -375,6 +376,78 @@ function Files() {
     const [toggleModal, setToggleModal] = useState(false);
     const [fileProperties, setFileProperties] = useState([]);
 
+    const [summaryModalOpen, setSummaryModalOpen] = useState(false);
+    const [currentSummary, setCurrentSummary] = useState("");
+    const [summaryLoading, setSummaryLoading] = useState(false);
+    const [summaryError, setSummaryError] = useState("");
+    const [summaryTitle, setSummaryTitle] = useState("");
+    const [summaries, setSummaries] = useState({});
+
+    const getSummaryCookie = (fileId) => {
+        const name = `summary_${fileId}=`;
+        const cookie = document.cookie.split(";").find(c => c.trim().startsWith(name));
+        if (!cookie) return null;
+        return decodeURIComponent(cookie.trim().substring(name.length));
+    };
+
+    const setSummaryCookie = (fileId, summary) => {
+        const safeSummary = summary.length > 2000 ? `${summary.slice(0, 2000)}...` : summary;
+        document.cookie = `summary_${fileId}=${encodeURIComponent(safeSummary)}; path=/; max-age=${30 * 24 * 60 * 60}`;
+    };
+
+    useEffect(() => {
+        const loadedSummaries = {};
+        files.forEach((file) => {
+            const saved = getSummaryCookie(file._id);
+            if (saved) loadedSummaries[file._id] = saved;
+        });
+        setSummaries(loadedSummaries);
+    }, [files]);
+
+    const handleSummarizeFile = async (file) => {
+        setSummaryTitle(file.fileName);
+        setSummaryError("");
+
+        const cachedSummary = getSummaryCookie(file._id);
+        if (cachedSummary) {
+            setCurrentSummary(cachedSummary);
+            setSummaryModalOpen(true);
+            return;
+        }
+
+        setSummaryLoading(true);
+        setCurrentSummary("Summarizing file... Please wait...");
+        setSummaryModalOpen(true);
+
+        try {
+            const response = await fetch(`${API_URL}/api/files/${file._id}/summarize`);
+            const contentType = response.headers.get("content-type") || "";
+            let data;
+
+            if (contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                const rawText = await response.text();
+                data = { success: false, message: `Server error: ${response.status}`, error: rawText.slice(0, 300) };
+            }
+
+            if (response.ok && data.success) {
+                setCurrentSummary(data.summary);
+                setSummaryCookie(file._id, data.summary);
+                setSummaries(prev => ({ ...prev, [file._id]: data.summary }));
+            } else {
+                setSummaryError(data.message || "Unable to summarize this file.");
+                setCurrentSummary("");
+            }
+        } catch (err) {
+            console.error("Error summarizing file:", err);
+            setSummaryError("Failed to summarize file. Please try again later.");
+            setCurrentSummary("");
+        } finally {
+            setSummaryLoading(false);
+        }
+    };
+
     // for identifying file icons
     const getFileIcon = (mimeType) => {
         const mimeMapping = {
@@ -501,6 +574,34 @@ function Files() {
         return sumStorage
     }
 
+    // ==========================================
+    // KEYWORD EXTRACTION STATES & LOGIC
+    // ==========================================
+    const [keywordModalOpen, setKeywordModalOpen] = useState(false);
+    const [currentKeywords, setCurrentKeywords] = useState([]);
+    const [keywordStatus, setKeywordStatus] = useState("");
+    const [keywordLoading, setKeywordLoading] = useState(false);
+    const [keywordTitle, setKeywordTitle] = useState("");
+
+    const handleViewKeywords = async (file) => {
+        setKeywordTitle(file.fileName);
+        setKeywordLoading(true);
+        setKeywordModalOpen(true);
+        try {
+            const response = await fetch(`${API_URL}/api/files/${file._id}/keywords`);
+            const data = await response.json();
+            if (data.success) {
+                setCurrentKeywords(data.keywords);
+                setKeywordStatus(data.status); // "pending", "completed", or "failed"
+            }
+        } catch (err) {
+            console.error("Failed to load keywords", err);
+            setKeywordStatus("failed");
+        } finally {
+            setKeywordLoading(false);
+        }
+    };
+
 
     return (
         <div id="file-page">
@@ -526,7 +627,7 @@ function Files() {
                     pointerEvents: toggleModal ? 'none' : 'auto', // ❌ Disables clicks when true
                     opacity: toggleModal ? 0.6 : 1 // 🛑 Slightly fade out when disabled
                 }}
-            ><text>Bucket URL - </text><b>{fullURL}</b></span>
+            ><span>Bucket URL - </span><b>{fullURL}</b></span>
 
             {/* Buttons for actions */}
             <div id="buttons-container"
@@ -648,6 +749,7 @@ function Files() {
                             <span className="file-header">Content Type</span>
                             <span className="file-header">File Size</span>
                             <span className="file-header">Uploaded</span>
+                            <span className="file-header">Summary</span>
                             <span className="file-header">More</span>
                         </div>
 
@@ -663,20 +765,31 @@ function Files() {
                                     <span className="file-info file-type">{file.fileType}</span>
                                     <span className="file-info file-size">{formatFileSize(file.fileSize)}</span>
                                     <span className="file-info file-upload">{fileTimes[file._id] || "Just now"} ago</span>
+                                    <span className="file-info file-summary">
+                                        <button className="summary-button" onClick={() => handleSummarizeFile(file)}>
+                                            {summaries[file._id] ? "View summary" : "Summarize"}
+                                        </button>
+                                    </span>
+                                    <span className="file-info file-more" style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "flex-end" }}>
+                                        {/* ✅ Keywords Info Icon */}
+                                        <FiInfo 
+                                            size={20} 
+                                            color="#00d8ff" 
+                                            style={{ cursor: "pointer" }} 
+                                            onClick={() => handleViewKeywords(file)} 
+                                            title="View Keywords"
+                                        />
 
-
-                                    {/* More Options Dropdown */}
+                                        {/* More Options Dropdown */}
                                     {moreToggle[index] && (
                                         <div className="more-option-wrapper">
                                             <div className="more-option">
-                                                <div className="download-option" onClick={() => { handleDownloadFile(file); setMoreToggle(false) }}><FiDownload size={20} color="yellowgreen" />Download file</div>
-                                                <div className="properties-option" onClick={() => { setToggleModal(true); setMoreToggle(false); setFileProperties(file) }}><FiInfo size={20} color="cornflowerblue" />File properties</div>
-                                                <div className="delete-option" onClick={() => { handleDeleteFile(file); setMoreToggle(false) }}><FiTrash size={20} color="tomato" />Delete file</div>
+                                                <div className="download-option" onClick={() => { handleDownloadFile(file); setMoreToggle({}) }}><FiDownload size={20} color="yellowgreen" />Download file</div>
+                                                <div className="properties-option" onClick={() => { setToggleModal(true); setMoreToggle({}); setFileProperties(file) }}><FiInfo size={20} color="cornflowerblue" />File properties</div>
+                                                <div className="delete-option" onClick={() => { handleDeleteFile(file); setMoreToggle({}) }}><FiTrash size={20} color="tomato" />Delete file</div>
                                             </div>
                                         </div>
                                     )}
-
-                                    <span className="file-info file-more">
                                         {/* Toggle Icon */}
                                         <div
                                             className="more-option-icon"
@@ -715,6 +828,61 @@ function Files() {
                     </div>
                 </div>
             )}
+
+            <div id="summary-modal-overlay" style={{ display: summaryModalOpen ? "flex" : "none" }} onClick={() => { if (!summaryLoading) setSummaryModalOpen(false); }}>
+                <div id="summary-modal" onClick={(e) => e.stopPropagation()}>
+                    <div id="summary-modal-header">
+                        <h3>File summary</h3>
+                        <button id="summary-modal-close" onClick={() => setSummaryModalOpen(false)}>×</button>
+                    </div>
+                    <div id="summary-modal-body">
+                        <div id="summary-modal-title">{summaryTitle}</div>
+                        {summaryLoading && <div id="summary-loading">⏳ Summarizing file, please wait...</div>}
+                        {summaryError && <div id="summary-error">{summaryError}</div>}
+                        {!summaryLoading && !summaryError && currentSummary && (
+                            <div id="summary-content">{currentSummary}</div>
+                        )}
+                        {!summaryLoading && !summaryError && !currentSummary && <div id="summary-empty">No summary available.</div>}
+                    </div>
+                </div>
+            </div>
+
+            {/* ✅ Keywords Modal Overlay */}
+            <div id="summary-modal-overlay" style={{ display: keywordModalOpen ? "flex" : "none" }} onClick={() => { if (!keywordLoading) setKeywordModalOpen(false); }}>
+                <div id="summary-modal" onClick={(e) => e.stopPropagation()}>
+                    <div id="summary-modal-header">
+                        <h3>File Keywords</h3>
+                        <button id="summary-modal-close" onClick={() => setKeywordModalOpen(false)}>×</button>
+                    </div>
+                    <div id="summary-modal-body">
+                        <div id="summary-modal-title">{keywordTitle}</div>
+                        
+                        {keywordLoading && <div id="summary-loading">⏳ Fetching keywords...</div>}
+                        
+                        {!keywordLoading && keywordStatus === "pending" && (
+                            <div id="summary-loading">⚙️ AI is processing keywords in the background. Check back in a few seconds!</div>
+                        )}
+
+                        {!keywordLoading && keywordStatus === "failed" && (
+                            <div id="summary-error">❌ Failed to extract keywords.</div>
+                        )}
+
+                        {!keywordLoading && keywordStatus === "completed" && currentKeywords.length > 0 && (
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "15px" }}>
+                                {currentKeywords.map((kw, i) => (
+                                    <span key={i} className="keyword-chip" style={{ padding: "6px 14px", background: "linear-gradient(135deg, #00d8ff, #007bff)", color: "white", borderRadius: "20px", fontSize: "0.85rem", fontWeight: "500", boxShadow: "0px 4px 10px rgba(0, 123, 255, 0.3)" }}>
+                                        {kw}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
+                        
+                        {!keywordLoading && keywordStatus === "completed" && currentKeywords.length === 0 && (
+                            <div id="summary-empty">No keywords generated.</div>
+                        )}
+                    </div>
+                </div>
+            </div>
 
             <PropertiesModal toggleModal={toggleModal} setToggleModal={setToggleModal} fileProperties={fileProperties} formatFileSize={formatFileSize} calculateTimeActive={calculateTimeActive} timeLeft={timeLeft} handleDownloadFile={handleDownloadFile} handleDeleteFile={handleDeleteFile} handleOpenFile={handleOpenFile} />
 
