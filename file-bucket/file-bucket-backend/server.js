@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({ origin: ["https://file-bucket.onrender.com", "http://localhost:4173"] })); // Allow file bucket frontend origin
+app.use(cors({ origin: ["https://file-bucket.onrender.com", "http://localhost:4173", "http://localhost:5173", "http://localhost:5174"] })); // Allow file bucket frontend origin
 app.use(express.json());
 
 // MongoDB Connection

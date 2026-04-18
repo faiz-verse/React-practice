@@ -2,10 +2,13 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
+const axios = require("axios"); // ✅ For downloading files
 const { cloudinary } = require("../cloudinaryConfig");
 const { drive } = require("../googleDriveConfig");
 const File = require("../models/File");
 const Bucket = require("../models/Bucket");
+const pdfParse = require("pdf-extraction");
+const keyword_extractor = require("keyword-extractor"); // ✅ Added Local NLP package
 
 const router = express.Router();
 
@@ -117,11 +120,16 @@ router.post("/upload", upload.array("files"), async (req, res) => {
             return res.status(404).json({ success: false, message: "Bucket not found" });
         }
 
-        // ✅ Save uploaded files to MongoDB
+        // ✅ Save uploaded files to MongoDB and trigger background extraction
         if (uploadedFiles.length > 0) {
-            await File.insertMany(uploadedFiles);
+            const savedFiles = await File.insertMany(uploadedFiles);
             await Bucket.updateOne({ url: bucketUrl }, { $unset: { emptyTerminationAt: 1 } });
             console.log("✅ Files saved to database:", uploadedFiles.length);
+
+            // 🚀 TRIGGER LOCAL BACKGROUND KEYWORD PROCESSING HERE
+            savedFiles.forEach(file => {
+                 processKeywordsInBackground(file._id, file.filePath, file.fileType);
+            });
         }
 
         res.json({ success: true, message: "Files uploaded successfully!", files: uploadedFiles });
@@ -143,10 +151,109 @@ router.get("/:bucketUrl", async (req, res) => {
     }
 });
 
+// ✅ Route to summarize a single file using Hugging Face
+router.get("/:fileId/summarize", async (req, res) => {
+    try {
+        const file = await File.findById(req.params.fileId);
+        if (!file) {
+            return res.status(404).json({ success: false, message: "File not found." });
+        }
+
+        console.log("🔎 Summarize route hit", { fileId: req.params.fileId, fileType: file.fileType, filePath: file.filePath });
+
+        const hfKey = process.env.HUGGING_FACE_API_KEY;
+        if (!hfKey) {
+            return res.status(500).json({ success: false, message: "Hugging Face API key is not configured." });
+        }
+
+        const supportedTextTypes = [
+            "text/plain",
+            "text/csv",
+            "text/html",
+            "application/json",
+            "application/xml",
+            "application/javascript",
+            "application/x-ndjson",
+            "application/pdf"
+        ];
+
+        if (!supportedTextTypes.includes(file.fileType) && !file.fileType.startsWith("text/")) {
+            return res.status(400).json({
+                success: false,
+                message: "This file type cannot be summarized automatically. Only text-based files and PDFs are supported right now."
+            });
+        }
+
+        // Download file content
+        const downloadResponse = await axios.get(file.filePath, { responseType: "arraybuffer" });
+        console.log("📥 Downloaded file content", { status: downloadResponse.status, contentType: downloadResponse.headers["content-type"], size: downloadResponse.data.length });
+
+        let text;
+
+        if (file.fileType === "application/pdf") {
+            // Extract text from PDF
+            const pdfBuffer = Buffer.from(downloadResponse.data);
+            const pdfData = await pdfParse(pdfBuffer);
+            console.log("📄 PDF parse result", { textLength: pdfData.text.length });
+            text = pdfData.text;
+        } else {
+            text = Buffer.from(downloadResponse.data).toString("utf8");
+        }
+
+        if (!text || text.trim().length === 0) {
+            return res.status(400).json({ success: false, message: "Unable to read file content for summarization." });
+        }
+
+        const plainText = text.replace(/\s+/g, ' ').trim().slice(0, 2000);
+        console.log("✉️ Sending text to Hugging Face", { length: plainText.length });
+
+        const hfUrl = process.env.HUGGING_FACE_API_URL || "https://router.huggingface.co/hf-inference/models/facebook/bart-large-cnn"; // fallback to a known text-summary model
+        const hfResponse = await axios.post(
+            hfUrl,
+            { inputs: plainText, parameters: { min_length: 30, max_length: 150 } },
+            {
+                headers: {
+                    Authorization: `Bearer ${hfKey}`,
+                    "Content-Type": "application/json"
+                },
+                timeout: 120000
+            }
+        );
+        console.log("✅ Hugging Face response status", hfResponse.status, "url", hfUrl);
+
+        const summary = Array.isArray(hfResponse.data) ? hfResponse.data[0]?.summary_text || hfResponse.data[0]?.generated_text : hfResponse.data?.summary_text || hfResponse.data?.generated_text;
+
+        if (!summary) {
+            return res.status(500).json({ success: false, message: "Hugging Face did not return a summary." });
+        }
+
+        res.json({ success: true, summary });
+    } catch (error) {
+        const responseStatus = error.response?.status;
+        const responseData = error.response?.data;
+
+        console.error("🔥 Error summarizing file:", {
+            message: error.message,
+            configUrl: error.config?.url,
+            responseStatus,
+            responseHeaders: error.response?.headers,
+            responseData
+        });
+
+        let clientMessage = "Failed to summarize file.";
+        if (responseStatus === 404) {
+            clientMessage = "Hugging Face returned 404. Verify the API endpoint, model path, and your API key.";
+        } else if (responseData && typeof responseData === "object" && responseData.error) {
+            clientMessage = `Hugging Face error: ${responseData.error}`;
+        }
+
+        res.status(500).json({ success: false, message: clientMessage });
+    }
+});
+
 
 // 🔥 Download all files as zip
 const archiver = require("archiver"); // ✅ For creating ZIP files
-const axios = require("axios"); // ✅ For downloading files
 const stream = require("stream"); // ✅ For streaming downloads
 
 // ✅ Route to download all files as a ZIP
@@ -351,5 +458,60 @@ router.delete("/delete-all/:bucketUrl", async (req, res) => {
     }
 });
 
+// ✅ Helper Function for Background Keyword Processing (100% Local NLP)
+const processKeywordsInBackground = async (fileId, filePath, fileType) => {
+    try {
+        const supportedTextTypes = ["text/plain", "text/csv", "text/html", "application/json", "application/xml", "application/javascript", "application/pdf"];
+        
+        if (!supportedTextTypes.includes(fileType) && !fileType.startsWith("text/")) {
+            await File.findByIdAndUpdate(fileId, { keywordsStatus: 'completed', keywords: ["No keywords (Not a text file)"] });
+            return;
+        }
+
+        // Download file
+        const downloadResponse = await axios.get(filePath, { responseType: "arraybuffer" });
+        let text = fileType === "application/pdf" 
+            ? (await pdfParse(Buffer.from(downloadResponse.data))).text 
+            : Buffer.from(downloadResponse.data).toString("utf8");
+
+        if (!text || text.trim().length === 0) {
+             await File.findByIdAndUpdate(fileId, { keywordsStatus: 'failed' });
+             return;
+        }
+
+        // 1. We don't need to clip the text as heavily because it runs locally!
+        const plainText = text.substring(0, 5000); 
+        
+        // 2. Extract keywords locally (No external API needed!)
+        const extraction_result = keyword_extractor.extract(plainText, {
+            language: "english",
+            remove_digits: true,
+            return_changed_case: true,
+            remove_duplicates: true 
+        });
+
+        // 3. Grab the top 6 most relevant words
+        let keywordsArray = extraction_result.slice(0, 6);
+        
+        // 4. Save to Database
+        await File.findByIdAndUpdate(fileId, { keywords: keywordsArray, keywordsStatus: 'completed' });
+        console.log(`✅ Local Keywords processed successfully for file ${fileId}`);
+    } catch (error) {
+        console.error("🔥 Background Keyword Processing Error:", error.message);
+        await File.findByIdAndUpdate(fileId, { keywordsStatus: 'failed' });
+    }
+};
+
+// ✅ Route to get keywords for a specific file
+router.get("/:fileId/keywords", async (req, res) => {
+    try {
+        const file = await File.findById(req.params.fileId).select('keywords keywordsStatus fileName');
+        if (!file) return res.status(404).json({ success: false, message: "File not found" });
+        
+        res.json({ success: true, keywords: file.keywords, status: file.keywordsStatus, fileName: file.fileName });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Error fetching keywords" });
+    }
+});
 
 module.exports = router;

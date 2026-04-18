@@ -7,7 +7,9 @@ const fileSchema = new mongoose.Schema({
     fileSize: { type: String, required: true },
     filePath: { type: String, required: true }, // Storage location
     uploadedAt: { type: Date, default: Date.now }, // Upload timestamp
-    provider: { type: String, required: true } // stored inside which cloud storage
+    provider: { type: String, required: true }, // stored inside which cloud storage
+    keywords: { type: [String], default: [] },
+    keywordsStatus: { type: String, enum: ['pending', 'completed', 'failed'], default: 'pending' },
 });
 
 const File = mongoose.model("File", fileSchema);
