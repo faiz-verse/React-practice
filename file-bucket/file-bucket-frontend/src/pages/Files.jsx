@@ -602,6 +602,31 @@ function Files() {
         }
     };
 
+    // ✅ Function to clear summary cookies
+    const handleClearSummaries = () => {
+        const cookies = document.cookie.split(";");
+        let clearedCount = 0;
+
+        cookies.forEach(cookie => {
+            const cookieName = cookie.split("=")[0].trim();
+            
+            // Look for any cookie that contains "summary" in its name
+            if (cookieName.toLowerCase().includes("summary")) {
+                // Delete the cookie by setting its expiration date to the past
+                document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                clearedCount++;
+            }
+        });
+
+        if (clearedCount > 0) {
+            alert(`✅ Successfully cleared ${clearedCount} saved summaries!`);
+            // Optional: If you have a state holding the currently viewed summary, clear it too
+            // setCurrentSummary(""); 
+        } else {
+            alert("ℹ️ No saved summaries found to clear.");
+        }
+    };
+
 
     return (
         <div id="file-page">
@@ -738,6 +763,27 @@ function Files() {
                                 <FiTrash size={20} color="white" />
                                 {files.length > 1 ? "Delete files" : "Delete file"}
                             </button>
+                            <button 
+    onClick={handleClearSummaries} 
+    style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+        padding: "10px 16px",
+        color: "#2c2c3e",
+        backgroundColor: "#ffcc00",
+        border: "1px solid #ffcc00",
+        borderRadius: "5px",
+        cursor: "pointer",
+        fontWeight: "bold",
+        transition: "transform 0.1s ease-in-out" // Makes the scale effect fast and smooth
+    }}
+    onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.95)"}
+    onMouseUp={(e) => e.currentTarget.style.transform = "scale(1)"}
+    onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"} // Resets if the user drags their mouse off the button
+>
+    <FiTrash size={16} /> Clear Summaries
+</button>
                         </div>
                     </div>
 
