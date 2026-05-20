@@ -235,7 +235,7 @@
 }
 
 .file-header:nth-child(1) {
-    width: 30%;
+    width: calc(40% + 26px);
 }
 
 .file-header:nth-child(2) {
@@ -278,7 +278,7 @@
 }
 
 .file-name {
-    width: 30%;
+    width: 40%;
     text-decoration: underline;
     text-decoration-color: cornflowerblue;
     text-decoration-thickness: 1px;

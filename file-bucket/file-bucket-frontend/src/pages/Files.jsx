@@ -763,27 +763,28 @@ function Files() {
                                 <FiTrash size={20} color="white" />
                                 {files.length > 1 ? "Delete files" : "Delete file"}
                             </button>
-                            <button 
-    onClick={handleClearSummaries} 
-    style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        padding: "10px 16px",
-        color: "#2c2c3e",
-        backgroundColor: "#ffcc00",
-        border: "1px solid #ffcc00",
-        borderRadius: "5px",
-        cursor: "pointer",
-        fontWeight: "bold",
-        transition: "transform 0.1s ease-in-out" // Makes the scale effect fast and smooth
-    }}
-    onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.95)"}
-    onMouseUp={(e) => e.currentTarget.style.transform = "scale(1)"}
-    onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"} // Resets if the user drags their mouse off the button
->
-    <FiTrash size={16} /> Clear Summaries
-</button>
+                            {/* Clear Summaries Button */}
+                            {/* <button
+                                        onClick={handleClearSummaries}
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "8px",
+                                            padding: "10px 16px",
+                                            color: "#2c2c3e",
+                                            backgroundColor: "#ffcc00",
+                                            border: "1px solid #ffcc00",
+                                            borderRadius: "5px",
+                                            cursor: "pointer",
+                                            fontWeight: "bold",
+                                            transition: "transform 0.1s ease-in-out" // Makes the scale effect fast and smooth
+                                        }}
+                                        onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.95)"}
+                                        onMouseUp={(e) => e.currentTarget.style.transform = "scale(1)"}
+                                        onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"} // Resets if the user drags their mouse off the button
+                                    >
+                                        <FiTrash size={16} /> Clear Summaries
+                            </button> */}
                         </div>
                     </div>
 
@@ -795,7 +796,8 @@ function Files() {
                             <span className="file-header">Content Type</span>
                             <span className="file-header">File Size</span>
                             <span className="file-header">Uploaded</span>
-                            <span className="file-header">Summary</span>
+                            {/* Temporary comment out */}
+                            {/* <span className="file-header">Summary</span> */}
                             <span className="file-header">More</span>
                         </div>
 
@@ -811,20 +813,21 @@ function Files() {
                                     <span className="file-info file-type">{file.fileType}</span>
                                     <span className="file-info file-size">{formatFileSize(file.fileSize)}</span>
                                     <span className="file-info file-upload">{fileTimes[file._id] || "Just now"} ago</span>
-                                    <span className="file-info file-summary">
+                                    {/* Temporary commented out */}
+                                    {/* <span className="file-info file-summary">
                                         <button className="summary-button" onClick={() => handleSummarizeFile(file)}>
                                             {summaries[file._id] ? "View summary" : "Summarize"}
                                         </button>
-                                    </span>
+                                    </span> */}
                                     <span className="file-info file-more" style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "flex-end" }}>
                                         {/* ✅ Keywords Info Icon */}
-                                        <FiInfo 
+                                        {/* <FiInfo 
                                             size={20} 
                                             color="#00d8ff" 
                                             style={{ cursor: "pointer" }} 
                                             onClick={() => handleViewKeywords(file)} 
                                             title="View Keywords"
-                                        />
+                                        /> */}
 
                                         {/* More Options Dropdown */}
                                     {moreToggle[index] && (
